@@ -240,8 +240,12 @@
 		<div class="clearfix"></div>	
 		
 		<div class="x_panel card">
-			<strong><font style="color:blue;font-size:24px;">BANDES</font> <font style="color:green;font-size:24px;">LOGISTIK</font></strong></br>
-			<font style="font-size:17px;">PT. Harnoko Logistindo</font></br></br>
+			<div style="direction: row;margin-top:15px;">
+			<img src="<?= base_url() ?>img/logo_h.png" width="40" alt="">
+			<span style="font-size: 24px;font-weight:bold;"> Harnoko Investama</span>
+			</div>
+			<!-- <strong><font style="color:blue;font-size:24px;">BANDES</font> <font style="color:green;font-size:24px;">LOGISTIK</font></strong></br> -->
+			<!-- <font style="font-size:17px;">PT. Harnoko Logistindo</font></br></br> -->
 			
 			<div align="center">
 				<font style="font-size:17px;">
@@ -339,6 +343,7 @@
 						<button type="submit" class="btn btn-primary">Replay All</button>
 					</form>
 					</td>
+					<td style="vertical-align:bottom"><a href="<?= base_url('app/memo_pdf/'.$memo->Id) ?>" class="btn btn-warning">Cetak PDF</a></td>
 				</tr>
 			<?php } else {?>
 				<tr style="height:100px;">
