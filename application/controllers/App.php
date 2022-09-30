@@ -485,7 +485,37 @@ public function simpan_memo()
 	}
 	}
 }
+public function memo_pdf()
+{
+	$a = $this->session->userdata('level');
+	if (strpos($a, '302')!== false) {
+		//script disini
+		
+		$id=$this->uri->segment(3);	
+		//$data['slip'] = $this->m_app->slip_gaji($this->session->userdata('nip'));
+		$data['slip'] = $this->m_app->slip_gaji($id);
+		$data['memo'] = $this->m_app->memo_get_detail($this->uri->segment(3));
 
+		$this->load->library('pdf');
+		$options = $this->pdf->getOptions(); 
+		$options->set(array('isRemoteEnabled' => true,'isHtml5ParserEnabled'=> true,'debugKeepTemp' => true));
+		$this->pdf->setOptions($options);
+		
+		// if (empty($data['slip'])){
+		// 	echo "<script>alert('Data tidak ditemukan!');window.location.href = '" . base_url() . "app/inbox';</script>";
+		// }else{
+			// if ($data['slip']->pembayaran == 1) {
+				$this->pdf->setPaper('A4', 'potrait');
+				$this->pdf->filename = "memo_view.pdf"; 
+				$this->pdf->load_view('memo_pdf', $data);
+			// }elseif($data['slip']->pembayaran == 2){
+				// $this->pdf->setPaper('A4', 'potrait');
+				// $this->pdf->filename = "slip_gaji.pdf"; 
+				// $this->pdf->load_view('slip_gaji_pdf2', $data);
+			// }
+		// }
+	}	
+}
 public function inbox_cari()
 {
 	if($this->session->userdata('isLogin') == FALSE)
