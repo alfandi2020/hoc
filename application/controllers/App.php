@@ -1178,10 +1178,10 @@ public function user()
 		
 		//inbox notif
 		$nip = $this->session->userdata('nip');
-		$sql = "SELECT COUNT(Id) FROM users";
+		$sql = "SELECT COUNT(id) FROM users WHERE (nip LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%')";
 		$query = $this->db->query($sql);
 		$res2 = $query->result_array();
-		$result = $res2[0]['COUNT(Id)'];
+		$result = $res2[0]['COUNT(id)'];
 		$data['count_inbox'] = $result;
 		
 		$this->load->view('user', $data);
@@ -1201,10 +1201,10 @@ public function user_view()
 		}else{
 			//inbox notif
 			$nip = $this->session->userdata('nip');
-			$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
+			$sql = "SELECT COUNT(id) FROM users WHERE (nip LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%')";
 			$query = $this->db->query($sql);
 			$res2 = $query->result_array();
-			$result = $res2[0]['COUNT(Id)'];
+			$result = $res2[0]['COUNT(id)'];
 			$data['count_inbox'] = $result;
 			
 			$this->load->view('user_view',$data);
@@ -1215,10 +1215,10 @@ public function user_view()
 public function add_user()
 {
 		$nip = $this->session->userdata('nip');
-			$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
+		$sql = "SELECT COUNT(id) FROM users WHERE (nip LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%')";
 			$query = $this->db->query($sql);
 			$res2 = $query->result_array();
-			$result = $res2[0]['COUNT(Id)'];
+			$result = $res2[0]['COUNT(id)'];
 			$data['count_inbox'] = $result;
 			
 		if ($this->input->post('add') == 'add') {
@@ -1226,14 +1226,14 @@ public function add_user()
 			$this->form_validation->set_rules('username', 'Username', 'required|trim');
 			$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 			if($this->form_validation->run() === false){
-				$this->session->set_flashdata('msg','<div class="alert alert-danger">Umur Minimal 18 Tahun</div>');
+				$this->session->set_flashdata('msg','<div class="alert alert-danger">tidak boleh kosong</div>');
 
 				$this->load->view('user_view',$data);
 
 				// echo "<script>alert('Umur Minimal 18 Tahunn !');window.history.back();</script>";
 				// redirect('app/add_user');
 			}else{
-			$diff = date_diff(date_create($this->input->post('tgl_lahir')), date_create($today));
+				$diff = date_diff(date_create($this->input->post('tgl_lahir')), date_create($today));
 			if ($diff->format('%y') < 18) {
 				// $this->session->set_flashdata('msg','<div class="alert alert-danger">Umur Minimal 18 Tahun</div>');
 				// redirect('app/add_user');
@@ -1282,10 +1282,11 @@ public function user_edit()
 		}else{
 			//inbox notif
 			$nip = $this->session->userdata('nip');
-			$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
+			$sql = "SELECT COUNT(id) FROM users WHERE (nip LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%')";
+
 			$query = $this->db->query($sql);
 			$res2 = $query->result_array();
-			$result = $res2[0]['COUNT(Id)'];
+			$result = $res2[0]['COUNT(id)'];
 			$data['count_inbox'] = $result;
 			
 			if ($this->input->post('edit') == 'edit') {

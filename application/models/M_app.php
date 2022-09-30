@@ -57,6 +57,20 @@ function user_get($limit, $start,$nip)
 }
 function user_get_detail($id)
 {
+	$nip = $this->session->userdata('nip');
+	$sql = "select users.read FROM users WHERE id =$id";
+	$query = $this->db->query($sql);
+	$result = $query->row();
+	$kalimat = $result->read;
+	if (preg_match("/$nip/i", $kalimat)){}else{
+		$kalimat1 = $kalimat . ' ' . $nip;
+		$data_update1	= array(
+			'read'	=> $kalimat1
+		);
+		$this->db->where('id', $id);
+		$this->db->update('users', $data_update1);
+	}
+
 	$sql="SELECT * from users where id='$id' ";
 	$query = $this->db->query($sql);
 	return $query->row();

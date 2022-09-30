@@ -381,7 +381,7 @@
 								<tr>
 									<th width="200">Date of birth</th>
 									<td> <div class='input-group date' id='myDatepicker2'>
-                                 <input type='text' id='date_pic' name='date_pic' class="form-control" placeholder="yyyy-mm-dd" data-validate-words="1" required="required"/>
+                                 <input type='text' id='date_pic' name='tgl_lahir' class="form-control" placeholder="yyyy-mm-dd" data-validate-words="1" required="required"/>
                                  <span class="input-group-addon">
                                  <span class="glyphicon glyphicon-calendar"></span>
                                  </span>
@@ -415,10 +415,10 @@
 								<tr>
 									<th>Status</th>
 									<td>
-										<input name="status" type="radio"
+										<input name="status" value="1" type="radio"
 											id="active">
 										<label for="active">Active</label>
-										<input name="status" type="radio"
+										<input name="status" value="0" type="radio"
 											 id="noactive">
 										<label for="noactive">Not Active</label>
 									</td>

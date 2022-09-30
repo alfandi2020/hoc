@@ -300,9 +300,9 @@
 				<tbody>
 				<tr>
 					<?php 
-					// $nip = $this->session->userdata('nip');
-					// $kalimat = $data->read;
-					//if (preg_match("/$nip/i", $kalimat)) { ?>
+					$nip = $this->session->userdata('nip');
+					$kalimat = $data->read;
+					if (preg_match("/$nip/i", $kalimat)) { ?>
 						<p style="font-weight: normal;">
 						<td><?php echo $no; ?></td>
 						<td><?php echo $data->nama; ?></td>
@@ -318,7 +318,22 @@
 							<a class="btn btn-dark btn-xs" href="<?= base_url('app/user_view/'.$data->id) ?>">Open</a>
 							<a class="btn btn-warning btn-xs" href="<?= base_url('app/user_edit/'.$data->id.'/e') ?>">Edit</a>
 						</td>
-					
+					<?php }else{ ?>
+            <p style="font-weight: normal;">
+						<td><p style="font-weight: bold;"><?php echo $no; ?></p></td>
+						<td><p style="font-weight: bold;"><?php echo $data->nama; ?></p></td>
+						<td><p style="font-weight: bold;"><?php echo $data->username; ?></p></td>
+						<td><p style="font-weight: bold;"><?php echo $data->level; ?></p></td>
+						<td><p style="font-weight: bold;"><?php echo $data->nip; ?></p></td>
+						<td><p style="font-weight: bold;"><?php echo $data->status; ?></p></td>
+						
+						<td>
+							<!-- <form action="<?php echo base_url()."app/user_view/".$data->id; ?>" target="">
+								<button type="submit" class="btn btn-dark btn-xs">Open</button>
+							</form> -->
+							<a class="btn btn-dark btn-xs" href="<?= base_url('app/user_view/'.$data->id) ?>">Open</a>
+							<a class="btn btn-warning btn-xs" href="<?= base_url('app/user_edit/'.$data->id.'/e') ?>">Edit</a>
+						</td>
 					<!--td>
 						<form action="<?php echo base_url()."app/surat_keluar_edit/".$data->id; ?>">
 							<button type="submit" class="btn btn-warning btn-xs">Edit</button>
@@ -328,6 +343,7 @@
 				</tbody>
 				
 			<?php
+          }
 			$no++;
 			endforeach;} 
 			?>
