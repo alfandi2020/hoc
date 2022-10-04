@@ -177,7 +177,7 @@ iframe {
   top: 0;
   left: 0;
   /*background-color: rgba(0,0,0,0.65);*/
-  background-color: #0c2461;
+  background-color: #fff;
 }
 
 .wrap-login100 {
@@ -203,7 +203,7 @@ iframe {
 .login100-form {
   width: 100%;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: #f7f7f7;
 }
 
 .login100-form-logo {

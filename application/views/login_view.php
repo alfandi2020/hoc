@@ -62,13 +62,17 @@
 
          <div class="container-login100" style="background-image: url('');">
 
-            <div class="wrap-login390 p-t-10 p-b-10">
+            <div class="p-t-10 p-b-10">
 
+            <div class="row">
+               <div class="col">
                <span class="login100-form-title p-b-41">
 
-               <img src="<?php echo base_url();?>img/hoc_login.png" alt="..." >
+               <img class="mt-5"  width="400" src="<?php echo base_url();?>img/login_h.jpeg" alt="..." >
 
                </span>
+               </div>
+               <div class="col">
 
                <form class="login100-form validate-form p-b-33 p-t-5" action="<?php echo base_url();?>login/login_form" method="post" name="login">
 
@@ -97,6 +101,8 @@
                      </button>&nbsp;
 
                </form>
+            </div>
+            </div>
 
 					 <!--button class="login100-form-btn" onclick="window.location.replace('<?php echo base_url();?>login/register_view');">
 
