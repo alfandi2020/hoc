@@ -112,7 +112,7 @@
 
 				  </div>
 
-				  <br><div class="text-center"><font color="#54585b">Harnoko Office Communication &copy;2022</font></div>
+				  <br><div class="text-center"><font color="#54585b">Copyright © KODEINDO 2023 All rights reserved.</font></div>
 
 
             </div>
