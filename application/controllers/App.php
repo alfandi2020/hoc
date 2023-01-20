@@ -9,7 +9,7 @@ class App extends CI_Controller {
     
     //$this->load->model('m_login');
 	$this->load->model('m_app');
-    $this->load->library(array('form_validation','session', 'user_agent'));
+    $this->load->library(array('form_validation','session', 'user_agent','Api_Whatsapp'));
 	$this->load->library('pagination');
     $this->load->database();
     $this->load->helper('url','form','download');
@@ -389,11 +389,23 @@ public function simpan_memo()
 			foreach ($this->input->post('tujuan_memo[]') as $value) 
 			{
 				$nip_kpd .= $value.';';
+				//send notif wa boc
+				$get_user = $this->db->get_where('users',['nip' => $value])->row_array();
+				$nama_session = $this->session->userdata('nama');
+				$subject_memo = $this->input->post('subject_memo');
+				$msg = "There's a new Memo\nBOC From : *$nama_session*\nSubject :  *$subject_memo*";
+				$this->api_whatsapp->wa_notif($msg,$get_user['phone']);
 			}
 			if (!empty($this->input->post('cc_memo[]'))){
 				foreach ($this->input->post('cc_memo[]') as $value1) 
 				{
 					$nip_cc .= $value1.';';
+					//send notif wa boc
+					$get_user = $this->db->get_where('users',['nip' => $value1])->row_array();
+					$nama_session = $this->session->userdata('nama');
+					$subject_memo = $this->input->post('subject_memo');
+					$msg = "There's a new Memo\nBOC From : *$nama_session*\nSubject :  *$subject_memo*";
+					$this->api_whatsapp->wa_notif($msg,$get_user['phone']);
 				}
 			}
 			
