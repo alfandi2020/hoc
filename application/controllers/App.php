@@ -206,7 +206,7 @@ public function create_memo()
 			$res3 = $query3->result_array();
 			$result3 = $res3[0]['COUNT(id)'];
 			$data['count_inbox2'] = $result3;
-			$this->load->view('create_task', $data);
+			// $this->load->view('create_task', $data);
 		
 		$this->load->view('create_memo', $data);
 	}
@@ -509,7 +509,7 @@ public function simpan_memo()
 		$res3 = $query3->result_array();
 		$result3 = $res3[0]['COUNT(id)'];
 		$data['count_inbox2'] = $result3;
-		$this->load->view('create_task', $data);
+		// $this->load->view('create_task', $data);
 		
 		$this->load->view('create_memo', $data);
 	}
@@ -789,7 +789,6 @@ public function send_memo()
 			$res3 = $query3->result_array();
 			$result3 = $res3[0]['COUNT(id)'];
 			$data['count_inbox2'] = $result3;
-			$this->load->view('create_task', $data);
 		
 		$this->load->view('inbox_view', $data);
 	}
@@ -848,7 +847,6 @@ public function inbox()
 			$res3 = $query3->result_array();
 			$result3 = $res3[0]['COUNT(id)'];
 			$data['count_inbox2'] = $result3;
-			$this->load->view('create_task', $data);
 		
 		$this->load->view('inbox_view', $data);
 	}
