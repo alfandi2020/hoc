@@ -38,13 +38,13 @@ class Home extends CI_Controller
 	  //$data['utility'] = $this->m_login->utility();
 	  //redirect('app/grab_project');
 		$nip = $this->session->userdata('nip');
-		$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
+		$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%' OR nip_dari LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
 		$query = $this->db->query($sql);
 		$res2 = $query->result_array();
 		$result = $res2[0]['COUNT(Id)'];
 
-		$sql2 = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` LIKE '%$nip%');";
-		$sql3 = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%');";
+		$sql2 = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%' OR nip_dari LIKE '%$nip%') AND (`read` LIKE '%$nip%');";
+		$sql3 = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%' OR nip_dari LIKE '%$nip%');"; //total
 
     $query2 = $this->db->query($sql2);
 		$res3 = $query2->result_array();
