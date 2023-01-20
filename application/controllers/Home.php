@@ -57,6 +57,12 @@ class Home extends CI_Controller
 	  $data['count_inbox'] = $result;
 	  $data['read_inbox'] = $result2;
 
+			$sql4 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
+			$query4 = $this->db->query($sql4);
+			$res4 = $query4->result_array();
+			$result4 = $res4[0]['COUNT(id)'];
+			$data['count_inbox2'] = $result4;
+
 		// $sql4 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
 		// $query4 = $this->db->query($sql4);
 		// $res4 = $query4->result_array();

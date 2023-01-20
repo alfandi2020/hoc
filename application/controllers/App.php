@@ -193,13 +193,20 @@ public function create_memo()
 	if (strpos($a, '401')!== false) {
 		$data['sendto'] = $this->m_app->sendto($this->session->userdata('level_jabatan'),$this->session->userdata('bagian'));
 		
-		//inbox notif
-		$nip = $this->session->userdata('nip');
-		$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
-		$query = $this->db->query($sql);
-		$res2 = $query->result_array();
-		$result = $res2[0]['COUNT(Id)'];
-		$data['count_inbox'] = $result;
+			//inbox notif
+			$nip = $this->session->userdata('nip');
+			$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
+			$query = $this->db->query($sql);
+			$res2 = $query->result_array();
+			$result = $res2[0]['COUNT(Id)'];
+			$data['count_inbox'] = $result;
+			
+			$sql3 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
+			$query3 = $this->db->query($sql3);
+			$res3 = $query3->result_array();
+			$result3 = $res3[0]['COUNT(id)'];
+			$data['count_inbox2'] = $result3;
+			$this->load->view('create_task', $data);
 		
 		$this->load->view('create_memo', $data);
 	}
@@ -497,6 +504,13 @@ public function simpan_memo()
 		$result = $res2[0]['COUNT(Id)'];
 		$data['count_inbox'] = $result;
 		
+		$sql3 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
+		$query3 = $this->db->query($sql3);
+		$res3 = $query3->result_array();
+		$result3 = $res3[0]['COUNT(id)'];
+		$data['count_inbox2'] = $result3;
+		$this->load->view('create_task', $data);
+		
 		$this->load->view('create_memo', $data);
 	}
 	}
@@ -762,13 +776,20 @@ public function send_memo()
 		$data['users_data'] = $this->m_app->memo_get_send($config["per_page"], $data['page'], $this->session->userdata('nip'));
 		$data['pagination'] = $this->pagination->create_links();
 		
-		//inbox notif
-		$nip = $this->session->userdata('nip');
-		$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
-		$query = $this->db->query($sql);
-		$res2 = $query->result_array();
-		$result = $res2[0]['COUNT(Id)'];
-		$data['count_inbox'] = $result;
+			//inbox notif
+			$nip = $this->session->userdata('nip');
+			$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
+			$query = $this->db->query($sql);
+			$res2 = $query->result_array();
+			$result = $res2[0]['COUNT(Id)'];
+			$data['count_inbox'] = $result;
+			
+			$sql3 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
+			$query3 = $this->db->query($sql3);
+			$res3 = $query3->result_array();
+			$result3 = $res3[0]['COUNT(id)'];
+			$data['count_inbox2'] = $result3;
+			$this->load->view('create_task', $data);
 		
 		$this->load->view('inbox_view', $data);
 	}
@@ -814,13 +835,20 @@ public function inbox()
 		$data['users_data'] = $this->m_app->memo_get($config["per_page"], $data['page'], $this->session->userdata('nip'));
 		$data['pagination'] = $this->pagination->create_links();
 		
-		//inbox notif
-		$nip = $this->session->userdata('nip');
-		$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
-		$query = $this->db->query($sql);
-		$res2 = $query->result_array();
-		$result = $res2[0]['COUNT(Id)'];
-		$data['count_inbox'] = $result;
+			//inbox notif
+			$nip = $this->session->userdata('nip');
+			$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
+			$query = $this->db->query($sql);
+			$res2 = $query->result_array();
+			$result = $res2[0]['COUNT(Id)'];
+			$data['count_inbox'] = $result;
+			
+			$sql3 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
+			$query3 = $this->db->query($sql3);
+			$res3 = $query3->result_array();
+			$result3 = $res3[0]['COUNT(id)'];
+			$data['count_inbox2'] = $result3;
+			$this->load->view('create_task', $data);
 		
 		$this->load->view('inbox_view', $data);
 	}
