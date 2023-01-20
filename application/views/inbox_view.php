@@ -308,10 +308,10 @@
 					$kalimat = $data->read;
 					if (preg_match("/$nip/i", $kalimat)) {?>
 						<p style="font-weight: normal;">
-						<td><?php echo $no; ?></td>
-						<td><?php echo $data->nomor_memo; ?></td>
-						<td><?php echo $data->judul; ?></td>
-						<td><?php echo date('d-m-Y', strtotime($data->tanggal)); ?></td>
+						<td><a href="<?php echo base_url()."app/memo_view/".$data->id; ?>" target=""><?php echo $no; ?></a></td>
+						<td><a href="<?php echo base_url()."app/memo_view/".$data->id; ?>" target=""><?php echo $data->nomor_memo; ?></a></td>
+						<td><a href="<?php echo base_url()."app/memo_view/".$data->id; ?>" target=""><?php echo $data->judul; ?></a></td>
+						<td><a href="<?php echo base_url()."app/memo_view/".$data->id; ?>" target=""><?php echo date('d-m-Y', strtotime($data->tanggal)); ?></a></td>
 						<td><?php 
 						if ($this->uri->segment(2)=='send_memo' OR $this->uri->segment(2)=='send_cari') {
 						$string = substr($data->nip_kpd, 0, -1);
@@ -337,11 +337,11 @@
 							</form>
 						</td>
 					<?php }else{?>
-						<td><p style="font-weight: bold;"><?php echo $no; ?></p></td>
-						<td><p style="font-weight: bold;"><?php echo $data->nomor_memo; ?></p></td>
-						<td><p style="font-weight: bold;"><?php echo $data->judul; ?></p></td>
-						<td><p style="font-weight: bold;"><?php echo date('d-m-Y', strtotime($data->tanggal)); ?></p></td>
-						<td><p style="font-weight: bold;"><?php 
+						<td><p style="font-weight: bold;"><a href="<?php echo base_url()."app/memo_view/".$data->id; ?>" target=""><?php echo $no; ?></a></p></td>
+						<td><p style="font-weight: bold;"><a href="<?php echo base_url()."app/memo_view/".$data->id; ?>" target=""><?php echo $data->nomor_memo; ?></a></p></td>
+						<td><p style="font-weight: bold;"><a href="<?php echo base_url()."app/memo_view/".$data->id; ?>" target=""><?php echo $data->judul; ?></a></p></td>
+						<td><p style="font-weight: bold;"><a href="<?php echo base_url()."app/memo_view/".$data->id; ?>" target=""><?php echo date('d-m-Y', strtotime($data->tanggal)); ?></a></p></td>
+						<td><p style="font-weight: bold;"><a href="<?php echo base_url()."app/memo_view/".$data->id; ?>" target=""><?php 
 						if ($this->uri->segment(2)=='send_memo' OR $this->uri->segment(2)=='send_cari') {
 						$string = substr($data->nip_kpd, 0, -1);
 						$arr_kpd = explode(";",$string);
@@ -352,7 +352,7 @@
 						echo $result->nama;
 						}else{
 							echo $data->nama;
-						}?></p></td>
+						}?></a></p></td>
 						<!--td><p style="font-weight: bold;"><?php 
 							if ($data->persetujuan==0){
 								echo 'Pending';
@@ -360,6 +360,7 @@
 								echo 'Approved';
 							}?></p>
 						</td-->	
+						
 						<td>
 							<form action="<?php echo base_url()."app/memo_view/".$data->id; ?>" target="">
 								<button type="submit" class="btn btn-dark btn-xs">Open</button>
