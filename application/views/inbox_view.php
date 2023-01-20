@@ -220,6 +220,8 @@
                     </li>
                   </ul-->
                 </li>
+                <?php include 'notif_tello.php' ?>
+
               </ul>
             </nav>
           </div>
