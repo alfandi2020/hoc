@@ -344,8 +344,8 @@
               <?php 
               $nip = $this->session->userdata('nip');?>
                 <td><?php echo $no; ?></td>
-                <td><a href="<?= base_url()."task/task_view/".$data->id ?>"><?php echo $data->name; ?></a></td>
-                <td><a href="<?= base_url()."task/task_view/".$data->id ?>">
+                <td><a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;"><?php echo $data->name; ?></a></td>
+                <td><a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;">
                   <?php 
                 $data_nip = explode(';',$data->member);
                 foreach ($data_nip as $x) {
@@ -360,17 +360,17 @@
                 ?>
 								</a>
               </td>
-              <td><a href="<?= base_url()."task/task_view/".$data->id ?>"><?php
+              <td><a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;"><?php
               $this->db->where('nip',$data->pic);
 
               $get = $this->db->get('users')->row_array();
               echo $get['nama']; ?></a></td>
-                <td><a href="<?= base_url()."task/task_view/".$data->id ?>"><?php echo  $activity; ?></a></td>
-                <td><a href="<?= base_url()."task/task_view/".$data->id ?>"><?php echo date('d-m-Y', strtotime($data->date_created)); ?></a></td>
+                <td><a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;"><?php echo  $activity; ?></a></td>
+                <td><a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;"><?php echo date('d-m-Y', strtotime($data->date_created)); ?></a></td>
                 
                 <td>
                   <!-- <form action="<?php echo base_url()."task/task_view/".$data->id; ?>"> -->
-                    <a href="<?= base_url()."task/task_view/".$data->id ?>" class="btn btn-xs" style="background-color: white;color:black;">Open</a>
+                    <a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;" class="btn btn-xs" style="background-color: white;color:black;">Open</a>
                   <!-- </form> -->
                 <?php if ($data->pic == $this->session->userdata('nip')) { ?>
                     <a href="<?= base_url('task/create_task/'.$data->id) ?>" class="btn btn-xs" style="background-color: black;color:white;">Edit</a>
@@ -381,9 +381,9 @@
               <tr style="background-color: <?= $color ?>;color:white;">
               <?php 
               $nip = $this->session->userdata('nip');?>
-                <td><a href="<?= base_url()."task/task_view/".$data->id ?>"><?php echo $no; ?></a></td>
-                <td><a href="<?= base_url()."task/task_view/".$data->id ?>"><?php echo $data->name; ?></a></td>
-                <td><a href="<?= base_url()."task/task_view/".$data->id ?>">
+                <td><a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;"><?php echo $no; ?></a></td>
+                <td><a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;"><?php echo $data->name; ?></a></td>
+                <td><a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;">
                   <?php 
                 $data_nip = explode(';',$data->member);
                 foreach ($data_nip as $x) {
@@ -398,17 +398,17 @@
                 ?>
 							</a>
               </td>
-              <td><a href="<?= base_url()."task/task_view/".$data->id ?>"><?php
+              <td><a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;"><?php
               $this->db->where('nip',$data->pic);
 
               $get = $this->db->get('users')->row_array();
               echo $get['nama']; ?></a></td>
-                <td><a href="<?= base_url()."task/task_view/".$data->id ?>"><?php echo  $activity; ?></a></td>
-                <td><a href="<?= base_url()."task/task_view/".$data->id ?>"><?php echo date('d-m-Y', strtotime($data->date_created)); ?></a></td>
+                <td><a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;"><?php echo  $activity; ?></a></td>
+                <td><a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;"><?php echo date('d-m-Y', strtotime($data->date_created)); ?></a></td>
                 
                 <td>
                   <!-- <form action="<?php echo base_url()."task/task_view/".$data->id; ?>"> -->
-                    <a href="<?= base_url()."task/task_view/".$data->id ?>" class="btn btn-xs" style="background-color: white;color:black;">Open</a>
+                    <a href="<?= base_url()."task/task_view/".$data->id ?>" style="color:white;" class="btn btn-xs" style="background-color: white;color:black;">Open</a>
                   <!-- </form> -->
                 <?php if ($data->pic == $this->session->userdata('nip')) { ?>
                     <a href="<?= base_url('task/create_task/'.$data->id) ?>" class="btn btn-xs" style="background-color: black;color:white;">Edit</a>

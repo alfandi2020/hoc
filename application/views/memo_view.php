@@ -277,8 +277,8 @@
 				foreach ($arr_kpd as $data):
 					$sql="SELECT nama,nama_jabatan FROM users WHERE nip='$data';";
 					$query = $this->db->query($sql);
-					$result = $query->row();
-					echo $result->nama ." (". $result->nama_jabatan .")";
+					$result = $query->row_array();
+					echo $result['nama'] ." (". $result['nama_jabatan'] .")";
 					echo "</br>";
 					$no++;
 				endforeach;
@@ -296,8 +296,8 @@
 					foreach ($arr_kpd as $data):
 						$sql="SELECT nama,nama_jabatan FROM users WHERE nip='$data';";
 						$query = $this->db->query($sql);
-						$result = $query->row();
-						echo $result->nama ." (". $result->nama_jabatan .")";
+						$result = $query->row_array();
+						echo $result['nama'] ." (". $result['nama_jabatan'] .")";
 						echo "</br>";
 						$no++;
 					endforeach;
