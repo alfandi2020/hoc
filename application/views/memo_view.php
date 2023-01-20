@@ -241,8 +241,8 @@
 		
 		<div class="x_panel card">
 			<div style="direction: row;margin-top:15px;">
-			<img src="<?= base_url() ?>img/logo_h.png" width="40" alt="">
-			<span style="font-size: 24px;font-weight:bold;"> Harnoko Investama</span>
+				<img src="<?= base_url() ?>img/logo_h.png" width="40" alt="">
+				<span style="font-size: 24px;font-weight:bold;"> Harnoko Investama</span>
 			</div>
 			<!-- <strong><font style="color:blue;font-size:24px;">BANDES</font> <font style="color:green;font-size:24px;">LOGISTIK</font></strong></br> -->
 			<!-- <font style="font-size:17px;">PT. Harnoko Logistindo</font></br></br> -->

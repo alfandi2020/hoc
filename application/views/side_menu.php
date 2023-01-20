@@ -29,6 +29,23 @@
 			</li>
 	  <?php } ?>
 	  <?php $a = $this->session->userdata('level');
+		if (strpos($a, '60') !== false) {?>
+			<li>
+			<a><i class="fa fa-edit"></i>Tello<span class="fa fa-chevron-down"></span></a>
+			<ul class="nav child_menu">
+				<?php $a = $this->session->userdata('level');
+					if (strpos($a, '601') !== false) {?>
+						<li><a href="<?php echo base_url();?>task/task">Task List</a></li>
+				<?php } ?>
+				<?php $a = $this->session->userdata('level');
+					if (strpos($a, '601') !== false) {?>
+						<li><a href="<?php echo base_url();?>task/create_task">Create</a></li>
+				<?php } ?>
+				
+			</ul>
+			</li>
+	  <?php } ?>
+	  <?php $a = $this->session->userdata('level');
 		if (strpos($a, '70') !== false) {?>
 			<li>
 			<a><i class="fa fa-edit"></i>External Letter<span class="fa fa-chevron-down"></span></a>

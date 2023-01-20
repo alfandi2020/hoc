@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
-    <title>BDL CORE | Business Development</title>
+    <title>HOC CORE | Business Development</title>
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>src/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -92,7 +92,9 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="<?php echo base_url();?>" class="site_title"><img src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42" width="60"><span> Harnoko</span></a>
+						<a href="<?php echo base_url();?>" class="site_title"><img
+								src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42"
+								width="50"><span> Harnoko Group</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -150,74 +152,76 @@
                   </ul>
                 </li>
 
+              
                 <li role="presentation" class="dropdown">
                   <a href="<?php echo base_url()."app/inbox"; ?>" class="dropdown-toggle info-number">
                     <i class="fa fa-envelope-o"></i>
-					<?php if ($count_inbox==0) {?>
-						<span class="badge bg-green"><?php echo $count_inbox;?></span>
-					<?php }else{?>
-						<span class="badge bg-red"><?php echo $count_inbox;?></span>
-					<?php }?>
+                  <?php if ($count_inbox==0) {?>
+                    <span class="badge bg-green"><?php echo $count_inbox;?></span>
+                  <?php }else{?>
+                    <span class="badge bg-red"><?php echo $count_inbox;?></span>
+                  <?php }?>
                   </a>
-                  <!--ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
+                    <!--ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                      <li>
                         <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
+                          <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
                         </a>
-                      </div>
-                    </li>
-                  </ul-->
+                      </li>
+                      <li>
+                        <a>
+                          <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <a>
+                          <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
+                          <span>
+                            <span>John Smith</span>
+                            <span class="time">3 mins ago</span>
+                          </span>
+                          <span class="message">
+                            Film festivals used to be do-or-die moments for movie makers. They were where...
+                          </span>
+                        </a>
+                      </li>
+                      <li>
+                        <div class="text-center">
+                          <a>
+                            <strong>See All Alerts</strong>
+                            <i class="fa fa-angle-right"></i>
+                          </a>
+                        </div>
+                      </li>
+                    </ul-->
                 </li>
+                <?php include 'notif_tello.php' ?>
               </ul>
             </nav>
           </div>
@@ -237,48 +241,44 @@
 						?><font color="brown">Send Memo</font><br><br>
 				</div>
 				<!-- search -->
-				<form data-parsley-validate action="<?php echo base_url();?>app/send_cari" method="post" name="form_input" id="form_input">
+				<form data-parsley-validate action="<?php echo base_url();?>task/send_cari" method="post" name="form_input" id="form_input">
 					<label class="control-label col-md-1 col-sm-1 col-xs-4" for="cari_nama">Filter
 						<span class="required">*</span>
 					</label>
 					<div class="col-md-6 col-sm-6 col-xs-8">
-						<input type="text" id="search" name="search" class="form-control col-md-7 col-xs-12" placeholder="isi dengan judul yang akan dicari">
+						<input type="text" id="search" name="search" class="form-control col-md-7 col-xs-12" placeholder="isi dengan project name yang akan dicari">
 					</div>
 					<?php echo form_submit('cari_memo', 'Cari', 'class="btn btn-primary"'); ?>
-					<input type="button" class="btn btn-primary" value="Tampilkan Semua" onclick="window.location.href='<?php echo base_url(); ?>app/inbox'" />
+					<input type="button" class="btn btn-primary" value="Tampilkan Semua" onclick="window.location.href='<?php echo base_url(); ?>task/task'" />
 				</form>
 				<?php }else{?>
-				<font color="brown">Inbox Memo</font><br><br>
+				<font color="brown">Task</font><br><br>
 			</div>
 			<!-- search -->
-			<form data-parsley-validate action="<?php echo base_url();?>app/inbox_cari" method="post" name="form_input" id="form_input">
+			<form data-parsley-validate action="<?php echo base_url();?>task/task_cari" method="post" name="form_input" id="form_input">
 				<label class="control-label col-md-1 col-sm-1 col-xs-4" for="cari_nama">Filter
 					<span class="required">*</span>
 				</label>
 				<div class="col-md-6 col-sm-6 col-xs-8">
-					<input type="text" id="search" name="search" class="form-control col-md-7 col-xs-12" placeholder="isi dengan judul yang akan dicari">
+					<input type="text" id="search" name="search" class="form-control col-md-7 col-xs-12" placeholder="isi dengan project name yang akan dicari">
 				</div>
 				<?php echo form_submit('cari_memo', 'Cari', 'class="btn btn-primary"'); ?>
-				<input type="button" class="btn btn-primary" value="Tampilkan Semua" onclick="window.location.href='<?php echo base_url(); ?>app/inbox'" />
+				<input type="button" class="btn btn-primary" value="Tampilkan Semua" onclick="window.location.href='<?php echo base_url(); ?>task/task'" />
 			</form>
 					
 				<?php } ?>
-			
 		   
 			<div class="table-responsive">
 			<table class="table table-striped">
 			<thead>
 			  <tr>
 				<th bgcolor="#008080"><font color="white">No.</font></th>
-				<th bgcolor="#008080"><font color="white">Project Name</font></th>
-				<th bgcolor="#008080"><font color="white">Member Name</font></th>
+				<th width="300" bgcolor="#008080"><font color="white">Project Name</font></th>
+				<th width="300" bgcolor="#008080"><font color="white">Member Name</font></th>
+				<th bgcolor="#008080"><font color="white">PIC Name</font></th>
 				<th bgcolor="#008080"><font color="white">Activity</font></th>
-				<th bgcolor="#008080"><font color="white">Tanggal</font></th>
-				<?php if ($this->uri->segment(2)=='send_memo' OR $this->uri->segment(2)=='send_cari') {?>
-					<th bgcolor="#008080"><font color="white">Kepada</font></th>
-				<?php }else{ ?>
-				<th bgcolor="#008080"><font color="white">Dari</font></th>
-				<?php } ?>
+				<th bgcolor="#008080"><font color="white">Tanggal Created</font></th>
+				<th bgcolor="#008080" width="150"><font color="white">Action</font></th>
 				<!--th bgcolor="#008080"><font color="white">Status</font></th-->
 			  </tr>
 			</thead>
@@ -295,24 +295,129 @@
 			} else 
 			{
 			foreach ($users_data as $data):
+        $cek_detail = $this->db->get_where('task_detail',['id_task' => $data->id])->result();
+        $cek_num = $this->db->get_where('task_detail',['id_task' => $data->id])->num_rows();
+        if ($cek_num == true) {
+          foreach ($cek_detail as $k) {
+            if ($k->due_date > date('Y-m-d')) {
+              $cek_task = 1;
+            }else{
+              $cek_task = 0;
+            }
+          }
+        }else{
+          $cek_task = 0;
+        }
+        if ($data->activity == '1' && $cek_task == 1) {
+          $color = '#00b894';
+        }else if ($data->activity == '3') {
+          $color = '#636e72';
+        }else{
+          $color = '#ff7675';
+        }
+
+        // if ($data->activity == '1') {
+        //   $color = '#00b894';
+        // }else if ($data->activity == '2') {
+        //   $color = '#0984e3';
+        // }else{
+        //   $color = '#636E72';
+        // }
+        if ($data->activity == '1') {
+          $activity = 'Open';
+        }else if ($data->activity == '2') {
+          $activity = 'Pending';
+        }else{
+          $activity = 'Closed';
+        }
 			?>
 				<!--content here-->
 				<tbody>
-				<tr <?= $data->read == 1 ? 'style="font-weight: bold;"' : '' ?>>
-					<?php 
-					$nip = $this->session->userdata('nip');?>
-						<td><?php echo $no; ?></td>
-						<td><?php echo $data->name; ?></td>
-						<td><?php echo $data->member; ?></td>
-						<td><?php echo $data->activity; ?></td>
-						<td><?php echo date('d-m-Y', strtotime($data->date_created)); ?></td>
-						
-						<td>
-							<form action="<?php echo base_url()."app/task_view/".$data->id; ?>" target="">
-								<button type="submit" class="btn btn-dark btn-xs">Open</button>
-							</form>
-						</td>
-				</tr>
+          <?php
+            $nip = $this->session->userdata('nip');
+            $this->db->where('id_task',$data->id);
+            $task_detail = $this->db->get('task_detail')->row_array();
+            $kalimat = $task_detail['read'];
+            if (preg_match("/$nip/i", $kalimat)) {
+          ?>
+            <tr style="background-color: <?= $color ?>;color:white;">
+              <?php 
+              $nip = $this->session->userdata('nip');?>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $data->name; ?></td>
+                <td>
+                  <?php 
+                $data_nip = explode(';',$data->member);
+                foreach ($data_nip as $x) {
+
+                if ($x != '') {
+                $this->db->where('nip',$x);
+
+                  $get = $this->db->get('users')->row_array();
+                  echo $get['nama'] . ', ';
+                  }
+                }
+                ?>
+
+              </td>
+              <td><?php
+              $this->db->where('nip',$data->pic);
+
+              $get = $this->db->get('users')->row_array();
+              echo $get['nama']; ?></td>
+                <td><?php echo  $activity; ?></td>
+                <td><?php echo date('d-m-Y', strtotime($data->date_created)); ?></td>
+                
+                <td>
+                  <!-- <form action="<?php echo base_url()."task/task_view/".$data->id; ?>"> -->
+                    <a href="<?= base_url()."task/task_view/".$data->id ?>" class="btn btn-xs" style="background-color: white;color:black;">Open</a>
+                  <!-- </form> -->
+                <?php if ($data->pic == $this->session->userdata('nip')) { ?>
+                    <a href="<?= base_url('task/create_task/'.$data->id) ?>" class="btn btn-xs" style="background-color: black;color:white;">Edit</a>
+              <?php } ?>
+                  </td>
+            </tr>
+            <?php }else{ ?>
+              <tr style="background-color: <?= $color ?>;color:white;">
+              <?php 
+              $nip = $this->session->userdata('nip');?>
+                <td><?php echo $no; ?></td>
+                <td><?php echo $data->name; ?></td>
+                <td>
+                  <?php 
+                $data_nip = explode(';',$data->member);
+                foreach ($data_nip as $x) {
+
+                if ($x != '') {
+                $this->db->where('nip',$x);
+
+                  $get = $this->db->get('users')->row_array();
+                  echo $get['nama'] . ', ';
+                  }
+                }
+                ?>
+
+              </td>
+              <td><?php
+              $this->db->where('nip',$data->pic);
+
+              $get = $this->db->get('users')->row_array();
+              echo $get['nama']; ?></td>
+                <td><?php echo  $activity; ?></td>
+                <td><?php echo date('d-m-Y', strtotime($data->date_created)); ?></td>
+                
+                <td>
+                  <!-- <form action="<?php echo base_url()."task/task_view/".$data->id; ?>"> -->
+                    <a href="<?= base_url()."task/task_view/".$data->id ?>" class="btn btn-xs" style="background-color: white;color:black;">Open</a>
+                  <!-- </form> -->
+                <?php if ($data->pic == $this->session->userdata('nip')) { ?>
+                    <a href="<?= base_url('task/create_task/'.$data->id) ?>" class="btn btn-xs" style="background-color: black;color:white;">Edit</a>
+										
+              <?php } ?>
+              <i style="color: #fff;" class="fa fa-circle"></i>
+                  </td>
+            </tr>
+              <?php } ?>
 				</tbody>
 				
 			<?php

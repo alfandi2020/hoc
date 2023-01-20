@@ -109,10 +109,9 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="<?php echo base_url();?>" class="site_title"><img
+					<a href="<?php echo base_url();?>" class="site_title"><img
 								src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42"
-								width="50"><span> Bangun
-								Desa</span></a>
+								width="50"><span> Harnoko Group</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -243,6 +242,8 @@
                     </li>
                   </ul-->
 							</li>
+							<?php include 'notif_tello.php' ?>
+
 						</ul>
 					</nav>
 				</div>
@@ -250,165 +251,331 @@
 			<!-- /top navigation -->
 
 			<!-- page content -->
+			<?php if($this->uri->segment(4) != true) { ?>
 			<div class="right_col" role="main">
 				<!--div class="pull-left">
 				<font color='Grey'>Create New E-Memo </font>
-			</div-->
+				</div-->
 				<div class="clearfix"></div>
 
 				<!-- Start content-->
-				<div class="row">
-					<div class="col-md-12 col-sm-12 col-xs-12">
-						<div class="x_panel card">
-							<div class="x_title">
-								<h2>Create Detail Task
-								</h2>
-								<ul class="nav navbar-right panel_toolbox">
-									<li>
-										<a class="collapse-link">
-											<i class="fa fa-chevron-up">
-											</i>
-										</a>
-									</li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-											aria-expanded="false">
-											<i class="fa fa-wrench">
-											</i>
-										</a>
-										<ul class="dropdown-menu" role="menu">
-											<li>
-												<a href="#">Settings 1
-												</a>
-											</li>
-											<li>
-												<a href="#">Settings 2
-												</a>
-											</li>
-										</ul>
-									</li>
-									<li>
-										<a class="close-link">
-											<i class="fa fa-close">
-											</i>
-										</a>
-									</li>
-								</ul>
-								<div class="clearfix">
+				<?php echo form_open_multipart('task/save_detail_task', 'class="form-horizontal form-label-left" name="form_input" id="form_input" enctype="multipart/form-data"');?>
+				
+					<!-- <div class="row"> -->
+						<!-- <div class="col-md-12 col-sm-12 col-xs-12"> -->
+							<div class="x_panel card">
+								<div class="x_title">
+									<h2>Create Card
+									</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li>
+											<a class="collapse-link">
+												<i class="fa fa-chevron-up">
+												</i>
+											</a>
+										</li>
+										<li class="dropdown">
+											<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+												aria-expanded="false">
+												<i class="fa fa-wrench">
+												</i>
+											</a>
+											<ul class="dropdown-menu" role="menu">
+												<li>
+													<a href="#">Settings 1
+													</a>
+												</li>
+												<li>
+													<a href="#">Settings 2
+													</a>
+												</li>
+											</ul>
+										</li>
+										<li>
+											<a class="close-link">
+												<i class="fa fa-close">
+												</i>
+											</a>
+										</li>
+									</ul>
+									<div class="clearfix">
+									</div>
 								</div>
+								<div class="x_content">
+									<!-- <script>alert('Unauthorize Privilage!');window.history.back();</script> -->
+
+								<a href="javascript:history.back()" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Back</a>
+									<br />
+									<div class="task_array">
+										<h4 class="text-center">Card 1 </h4>
+										<br>
+										<input style="border-radius: 5px;" type="hidden" name="id_task" value="<?= $this->uri->segment(3) ?>">
+										<div class="item form-group">
+											<label style="text-align: left;"
+												class="control-label col-md-3 col-sm-3 col-xs-12">Task Name</label>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<input style="border-radius: 5px;" type="text" class="form-control"
+													name="project_name1" >
+											</div>
+										</div>
+										<input style="border-radius: 5px;" type="hidden" value="1" name="row[]">
+										<div class="item form-group">
+											<label style="text-align: left;"
+												class="control-label col-md-3 col-sm-3 col-xs-12">Responsible
+												Project </label>
+											<!-- <div class="col-md6 col-sm-6 col-xs-12"> -->
+											<div class="col-md-6 col-sm-6 col-xs-12">
+
+												<select required style="border-radius: 5px;" class="form-control" name="member_task1">
+													<option disabled selected>Select Responsible</option>
+													<?php foreach ($ss as $data){
+														if ($data->nip != '') {
+												?>
+													<option value="<?php echo $data->nip; ?>"><?php echo $data->nama; ?></option>
+													<?php }
+											} ?>
+												</select>
+											</div>
+											<!-- </div> -->
+										</div>
+
+										<div class="item form-group">
+											<label style="text-align: left;"
+												class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+											<div class="col-md6 col-sm-6 col-xs-12">
+												<textarea style="border-radius: 5px;" type="text" class="form-control" name="description1"></textarea>
+											</div>
+										</div>
+										<div class="item form-group">
+											<label style="text-align: left;"
+												class="control-label col-md-3 col-sm-3 col-xs-12">Start and due
+												date</label>
+											<div class="col-md-3 col-sm-6 col-xs-12">
+												<input style="border-radius: 5px;" type="date" class="form-control" name="start1" >
+											</div>
+											<div class="col-md-3 col-sm-6 col-xs-12">
+												<input style="border-radius: 5px;" type="date" class="form-control" name="end1" >
+											</div>
+										</div>
+										<div class="item form-group">
+											<label style="text-align: left;"
+												class="control-label col-md-3 col-sm-3 col-xs-12">Attachment</label>
+											<div class="col-md6 col-sm-6 col-xs-12">
+												<input style="border-radius: 5px;" multiple type="file" name="att1[]" class="form-control"
+													>
+											</div>
+										</div>
+
+										<div class="item form-group">
+											<label style="text-align: left;"
+												class="control-label col-md-3 col-sm-3 col-xs-12">Activity</label>
+											<div class="col-md6 col-sm-6 col-xs-12">
+												<select style="border-radius: 5px;" class="form-control" name="activity1" id="">
+													<option value="1">Open</option>
+													<option value="2">Pending</option>
+													<option value="3">Close</option>
+												</select>
+											</div>
+										</div>
+										<div class="item form-group">
+											<label style="text-align: left;"
+												class="control-label col-md-3 col-sm-3 col-xs-12">Comment</label>
+											<div class="col-md6 col-sm-6 col-xs-12">
+												<input style="border-radius: 5px;" type="text" class="form-control" name="comment1">
+											</div>
+										</div>
+									</div>
+								
+								</div>
+								</br>
+								</br>
+								</br>
 							</div>
-							<div class="x_content">
-								<br />
-								<?php echo form_open_multipart('app/save_detail_task', 'class="form-horizontal form-label-left" name="form_input" id="form_input" enctype="multipart/form-data"');?>
-								<div class="task_array">
-									<!-- <h4 class="text-center">Task 1 </h4> -->
-									<br>
-									<input type="hidden" name="id_task" value="<?= $this->uri->segment(3) ?>">
-									<div class="item form-group">
-										<label style="text-align: left;"
-											class="control-label col-md-3 col-sm-3 col-xs-12">Task Name</label>
+							<input type="hidden" value="<?= $this->uri->segment(3) ?>" name="id_card">
+						<!-- </div> -->
+					<!-- </div> -->
+								<div id="task_wrapper"></div>
+									<div class="form-group">
 										<div class="col-md-6 col-sm-6 col-xs-12">
-											<input type="text" class="form-control" placeholder="Lemari"
-												name="project_name1" >
+											<button class="btn btn-primary" type="reset" onclick="reset_form()">Reset</button>
+											<button type="submit" class="btn btn-success">Create
+															Card</button>
+											<button type="button" id="add_task" class="btn btn-warning">Add Card</button>
 										</div>
-									</div>
-									<input type="hidden" value="1" name="row[]">
-									<div class="item form-group">
-										<label style="text-align: left;"
-											class="control-label col-md-3 col-sm-3 col-xs-12">Responsible
-											Project </label>
-										<!-- <div class="col-md6 col-sm-6 col-xs-12"> -->
-										<div class="col-md-6 col-sm-6 col-xs-12">
-
-											<select class="form-control" name="member_task1">
-												<option disabled selected>Select Responsible</option>
-												<?php foreach ($ss as $data){
-													if ($data->nip != '') {
-                                              ?>
-												<option value="<?php echo $data->nip; ?>"><?php echo $data->nama; ?></option>
-												<?php }
-                                          } ?>
-											</select>
-										</div>
-										<!-- </div> -->
-									</div>
-
-									<div class="item form-group">
-										<label style="text-align: left;"
-											class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
-										<div class="col-md6 col-sm-6 col-xs-12">
-											<input type="text" class="form-control" name="description1" >
-										</div>
-									</div>
-									<div class="item form-group">
-										<label style="text-align: left;"
-											class="control-label col-md-3 col-sm-3 col-xs-12">Start and due
-											date</label>
-										<div class="col-md-3 col-sm-6 col-xs-12">
-											<input type="date" class="form-control" name="start1" >
-										</div>
-										<div class="col-md-3 col-sm-6 col-xs-12">
-											<input type="date" class="form-control" name="end1" >
-										</div>
-									</div>
-									<div class="item form-group">
-										<label style="text-align: left;"
-											class="control-label col-md-3 col-sm-3 col-xs-12">Attachment</label>
-										<div class="col-md6 col-sm-6 col-xs-12">
-											<input type="file" name="att[]" class="form-control"
-												>
-										</div>
-									</div>
-
-									<div class="item form-group">
-										<label style="text-align: left;"
-											class="control-label col-md-3 col-sm-3 col-xs-12">Activity</label>
-										<div class="col-md6 col-sm-6 col-xs-12">
-											<select class="form-control" name="activity1" id="">
-												<option value="Open">Open</option>
-												<option value="Close">Close</option>
-												<option value="Pending">Pending</option>
-											</select>
-										</div>
-									</div>
-									<div class="item form-group">
-										<label style="text-align: left;"
-											class="control-label col-md-3 col-sm-3 col-xs-12">Comment</label>
-										<div class="col-md6 col-sm-6 col-xs-12">
-											<input type="text" class="form-control" name="comment1" >
-										</div>
-									</div>
 								</div>
-								<div id="task_wrapper">
-
-								</div>
-								<div class="form-group">
-									<div class="col-md-6 col-sm-6 col-xs-12">
-										<button class="btn btn-primary" type="reset" onclick="reset_form()">Reset
-										</button>
-										<!--<button type="submit" id="save_project" name="save_project" class="btn btn-success" onclick="return clicked();">Submit</button>-->
-										<button type="submit" class="btn btn-success">Create
-											Task</button>
-										<button type="button" id="add_task" class="btn btn-warning">Add Task</button>
-										<!-- <button type="button" id="remove_task" class="btn btn-danger">Remove Task</button> -->
-										<!--<input type="submit" value="Save Customer" class="btn btn-success"/><br><br><br>-->
-										<?php //echo form_submit('save_customer', 'Save Customer', 'onclick="return clicked();", class="btn btn-success"'); ?>
-									</div>
-								</div>
-
-								</form>
-							</div>
-							</br>
-							</br>
-							</br>
-						</div>
-					</div>
-				</div>
+				</form>
+				<br><br><br><br>
 
 				<!-- Finish content-->
 
 			</div>
+			<?php }else{ ?>
+				<div class="right_col" role="main">
+					<!--div class="pull-left">
+					<font color='Grey'>Create New E-Memo </font>
+					</div-->
+					<div class="clearfix"></div>
 
+					<!-- Start content-->
+					<?php echo form_open_multipart('task/save_detail_task', 'class="form-horizontal form-label-left" name="form_input" id="form_input" enctype="multipart/form-data"');?>
+					
+						<!-- <div class="row"> -->
+							<!-- <div class="col-md-12 col-sm-12 col-xs-12"> -->
+								<div class="x_panel card">
+									<div class="x_title">
+										<h2>Edit Card
+										</h2>
+										<ul class="nav navbar-right panel_toolbox">
+											<li>
+												<a class="collapse-link">
+													<i class="fa fa-chevron-up">
+													</i>
+												</a>
+											</li>
+											<li class="dropdown">
+												<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+													aria-expanded="false">
+													<i class="fa fa-wrench">
+													</i>
+												</a>
+												<ul class="dropdown-menu" role="menu">
+													<li>
+														<a href="#">Settings 1
+														</a>
+													</li>
+													<li>
+														<a href="#">Settings 2
+														</a>
+													</li>
+												</ul>
+											</li>
+											<li>
+												<a class="close-link">
+													<i class="fa fa-close">
+													</i>
+												</a>
+											</li>
+										</ul>
+										<div class="clearfix">
+										</div>
+									</div>
+									<div class="x_content">
+										<!-- <script>alert('Unauthorize Privilage!');window.history.back();</script> -->
+
+									<a href="javascript:history.back()" class="btn btn-warning"><i class="fa fa-arrow-left"></i> Back</a>
+										<br />
+										<input type="hidden" name="status" value="edit">
+										<?php foreach ($row_edit as $x) { ?>
+										<div class="task_array">
+											<h4 class="text-center">Card 1 </h4>
+											<br>
+											<input style="border-radius: 5px;" type="hidden" name="id_task" value="<?= $this->uri->segment(3) ?>">
+											<div class="item form-group">
+												<label style="text-align: left;"
+													class="control-label col-md-3 col-sm-3 col-xs-12">Task Name</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<input value="<?= $x->task_name ?>" style="border-radius: 5px;" type="text" class="form-control"
+														name="project_name1" >
+												</div>
+											</div>
+											<input style="border-radius: 5px;" type="hidden" value="1" name="row[]">
+											<div class="item form-group">
+												<label style="text-align: left;"
+													class="control-label col-md-3 col-sm-3 col-xs-12">Responsible
+													Project </label>
+												<!-- <div class="col-md6 col-sm-6 col-xs-12"> -->
+												<div class="col-md-6 col-sm-6 col-xs-12">
+
+													<select required style="border-radius: 5px;" class="form-control" name="member_task1">
+														<option disabled selected>Select Responsible</option>
+														<?php foreach ($ss as $data){
+															if ($data->nip != '') {
+													?>
+														<option <?= $x->responsible == $data->nip ? 'selected' : ''?> value="<?php echo $data->nip; ?>"><?php echo $data->nama; ?></option>
+														<?php }
+												} ?>
+													</select>
+												</div>
+												<!-- </div> -->
+											</div>
+
+											<div class="item form-group">
+												<label style="text-align: left;"
+													class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>
+												<div class="col-md6 col-sm-6 col-xs-12">
+													<textarea style="border-radius: 5px;"  type="text" class="form-control" name="description1"><?= $x->description ?></textarea>
+												</div>
+											</div>
+											<div class="item form-group">
+												<label style="text-align: left;"
+													class="control-label col-md-3 col-sm-3 col-xs-12">Start and due
+													date</label>
+												<div class="col-md-3 col-sm-6 col-xs-12">
+													<input style="border-radius: 5px;" type="date" value="<?= $x->start_date ?>" class="form-control" name="start1" >
+												</div>
+												<div class="col-md-3 col-sm-6 col-xs-12">
+													<input style="border-radius: 5px;" type="date" value="<?= $x->due_date ?>" class="form-control" name="end1" >
+												</div>
+											</div>
+											<div class="item form-group">
+												<label style="text-align: left;"
+													class="control-label col-md-3 col-sm-3 col-xs-12">Attachment</label>
+												<div class="col-md6 col-sm-3 col-xs-12">
+													<input style="border-radius: 5px;" multiple type="file" name="att1[]" class="form-control"
+														>
+												</div>
+												<div class="col-md6 col-sm-3 col-xs-12">
+												<b>	<?= $x->attachment == null ? 'File tidak ada' : $x->attachment ?></b>
+												</div>
+
+											</div>
+
+											<div class="item form-group">
+												<label style="text-align: left;"
+													class="control-label col-md-3 col-sm-3 col-xs-12">Activity</label>
+												<div class="col-md6 col-sm-6 col-xs-12">
+													<select style="border-radius: 5px;" class="form-control" name="activity1" id="">
+														<option <?= $x->activity == '1' ? 'selected' : '' ?> value="1">Open</option>
+														<option <?= $x->activity == '2' ? 'selected' : '' ?> value="2">Pending</option>
+														<option <?= $x->activity == '3' ? 'selected' : '' ?> value="3">Close</option>
+													</select>
+												</div>
+											</div>
+											<div class="item form-group">
+												<label style="text-align: left;"
+													class="control-label col-md-3 col-sm-3 col-xs-12">Comment</label>
+												<div class="col-md6 col-sm-6 col-xs-12">
+													<input style="border-radius: 5px;" value="<?= $x->comment ?>" type="text" class="form-control" name="comment1">
+												</div>
+											</div>
+										</div>
+										<?php } ?>
+									
+									</div>
+									</br>
+									</br>
+									</br>
+								</div>
+								<input type="hidden" value="<?= $this->uri->segment(3) ?>" name="id_task">
+								<input type="hidden" value="<?= $this->uri->segment(4) ?>" name="id_card">
+							<!-- </div> -->
+						<!-- </div> -->
+									<div id="task_wrapper"></div>
+										<div class="form-group">
+											<div class="col-md-6 col-sm-6 col-xs-12">
+												<button class="btn btn-primary" type="reset" onclick="reset_form()">Reset</button>
+												<button type="submit" class="btn btn-success">Update
+																Card</button>
+												<!-- <button type="button" id="add_task" class="btn btn-warning">Add Card</button> -->
+											</div>
+									</div>
+					</form>
+					<br><br><br><br>
+
+					<!-- Finish content-->
+
+				</div>
+			<?php } ?>
 			<!-- /page content -->
 
 			<!-- footer content -->
@@ -472,14 +639,23 @@
 			}
 			$(document).ready(function () {
 				<?php
-				if ($this->session-> userdata('msg') == 'error2') {
+
+				if ($this->session->flashdata('msg') == 'success_edit') { ?>
+					Swal.fire({
+						icon: 'success',
+						title: 'success...',
+						text: 'Update Card berhasil!',
+					})
+				<?php 
+				}
+				if ($this->session->userdata('msg') == 'error2') {
 					?>
 					Swal.fire({
 						icon: 'error',
 						title: 'Oops...',
 						text: 'Error Input!',
 					}) <?php
-					$this->session-> unset_userdata('msg');
+					$this->session->unset_userdata('msg');
 				} else if ($this->session-> userdata('msg_memo')) {
 					?>
 					Swal.fire({
@@ -510,81 +686,89 @@
         if (x < max_fields) {
             x++;
             $(wrapper).append(
-				'<div>'+
-				'<hr>'+
-				'<input type="hidden" value="'+x+'" name="row[]">'+
+				'<div class="x_panel card">'+
+				'<h4 class="text-center">Card '+x+'</h4>'+
+				'<input style="border-radius: 5px;" type="hidden" value="'+x+'" name="row[]">'+
                 '<div class="item form-group">' +
                 '<label style="text-align: left;" class="control-label col-md-3 col-sm-3 col-xs-12">Task Name</label>' +
                 '<div class="col-md-6 col-sm-12 col-xs-12">' +
-                '<input type="text" class="form-control" name="project_name'+x+'" placeholder="Lemari" >' +
+                '<input style="border-radius: 5px;" type="text" class="form-control" name="project_name'+x+'" >' +
                 '</div>' +
 				'<button type="button" id="'+x+'" class="btn btn-danger remove_task">Remove Task</button>'+
                 '</div>'+
                 '<div class="item form-group">' +
                 '<label style="text-align: left;" class="control-label col-md-3 col-sm-3 col-xs-12">Responsible Project</label>' +
                 '<div class="col-md-6 col-sm-12 col-xs-12">' +
-                '<select class="form-control" id="member_task1'+x+'" name="member_task'+x+'" >' +
+                '<select required style="border-radius: 5px;" class="form-control" id="member_task1'+x+'" name="member_task'+x+'" >' +
 				'</select>'+
                 '</div>' +
                 '</div>'+
 				'<div class="item form-group">' +
                 '<label style="text-align: left;" class="control-label col-md-3 col-sm-3 col-xs-12">Description</label>' +
                 '<div class="col-md-6 col-sm-12 col-xs-12">' +
-                '<input type="text" class="form-control" name="description'+x+'" placeholder="" >' +
+                '<textarea style="border-radius: 5px;" type="text" class="form-control" name="description'+x+'" placeholder="" ></textarea>' +
                 '</div>' +
                 '</div>' +
 				'<div class="item form-group">' +
                 '<label style="text-align: left;" class="control-label col-md-3 col-sm-3 col-xs-12">Start and due date</label>' +
                 '<div class="col-md-3 col-sm-12 col-xs-12">' +
-                '<input type="date" class="form-control" name="start'+x+'" placeholder="" >' +
+                '<input style="border-radius: 5px;" type="date" class="form-control" name="start'+x+'" placeholder="" >' +
                 '</div>' +
                 '<div class="col-md-3 col-sm-12 col-xs-12">' +
-                '<input type="date" class="form-control" name="end'+x+'" placeholder="" >' +
+                '<input style="border-radius: 5px;" type="date" class="form-control" name="end'+x+'" placeholder="" >' +
                 '</div>' +
                 '</div>'+
 				'<div class="item form-group">' +
                 '<label style="text-align: left;" class="control-label col-md-3 col-sm-3 col-xs-12">Attachment</label>' +
                 '<div class="col-md-6 col-sm-12 col-xs-12">' +
-                '<input type="file" class="form-control" name="att'+x+'" placeholder="" >' +
+                '<input style="border-radius: 5px;" type="file" class="form-control" multiple name="att'+x+'[]" placeholder="" >' +
                 '</div>' +
                 '</div>'+
 				'<div class="item form-group">' +
                 '<label style="text-align: left;" class="control-label col-md-3 col-sm-3 col-xs-12">Activity</label>' +
                 '<div class="col-md-6 col-sm-12 col-xs-12">' +
-				'<select class="form-control" name="activity'+x+'" >' +
-				'<option value="Open">Open</option>'+
-				'<option value="Close">Close</option>'+
-				'<option value="Pending">Pending</option>'+
+				'<select style="border-radius: 5px;" class="form-control" name="activity'+x+'" >' +
+				'<option value="1">Open</option>'+
+				'<option value="2">Close</option>'+
+				'<option value="3">Pending</option>'+
 				'</select>'+
                 '</div>' +
                 '</div>'+
 				'<div class="item form-group">' +
                 '<label style="text-align: left;" class="control-label col-md-3 col-sm-3 col-xs-12">Comment</label>' +
                 '<div class="col-md-6 col-sm-12 col-xs-12">' +
-                '<input type="text" class="form-control" name="comment'+x+'" placeholder="" >' +
+                '<input style="border-radius: 5px;" type="text" class="form-control" name="comment'+x+'" placeholder="" >' +
                 '</div>' +
                 '</div>'+
-				'</div>'
+                '</div>'
             );
 
             //bentuk
                
                     var bentukAppend2 = '';
-                    $.ajax({
-                        url: base_url+"app/get_detail_task",
-                        type: "GET",
-                        dataType: "html",
-                        success: function (respons) {
-                            var obj_respons = JSON.parse(respons)
-							bentukAppend2 += '<option disabled selected>Select Responsible</option>';
-                            $.each(obj_respons,function(i,item){
-								if (item.username != '') {
-                                	bentukAppend2 += '<option value="'+item.nip+'">'+item.nama+'</option>';
-								}
-                            });
-                            $('#member_task1'+x).append(bentukAppend2);
-                        }
-                    })
+					bentukAppend2 += '<option disabled selected>Select Responsible</option>';
+					<?php foreach ($ss as $x){
+						if ($x->username != '') {
+						?>
+                        bentukAppend2 += '<option value="<?= $x->nip ?>"><?= $x->nama ?></option>';
+					<?php } 
+					}?>
+					$('#member_task1'+x).append(bentukAppend2);
+                    // $.ajax({
+                    //     url: "<?= base_url()?>task/get_detail_task",
+                    //     type: "GET",
+                    //     dataType: "html",
+                    //     success: function (respons) {
+                    //         var obj_respons = JSON.parse(respons)
+					// 		bentukAppend2 += '<option disabled selected>Select Responsible</option>';
+                    //         $.each(obj_respons,function(i,item){
+					// 			if (item.username != '') {
+                    //             	bentukAppend2 += '<option value="'+item.nip+'">'+item.nama+'</option>';
+					// 			}
+                    //         });
+                    //         $('#member_task1'+x).append(bentukAppend2);
+                    //     }
+                    // })
                     // var mediaAppend2 = '';
                     // $.ajax({
                     //     url: base_url + "permohonan/getMedia",
