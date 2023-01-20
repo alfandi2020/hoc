@@ -458,6 +458,97 @@
 										</div>
 									</div>
 								</div>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<div class="x_panel tile fixed_height_300">
+										<div class="x_title">
+											<h2><i class="fa fa-envelope-o"></i> Tello</h2>
+											<div class="clearfix"></div>
+										</div>
+										<div class="x_content">
+											<h4>Total Tello <?= $total_tello['id'] ?></h4><br>
+											<a href="<?= base_url('task/task') ?>">
+												<div class="widget_summary">
+													<div class="w_left w_25">
+														<span>Open</span>
+													</div>
+													<div class="w_center w_55">
+														<div class="progress">
+															<div class="progress-bar bg-blue-sky" role="progressbar"
+																aria-valuenow="46.288209606987" aria-valuemin="0"
+																aria-valuemax="100" style="width: <?= $open_tello['id'] ?>%;">
+																<!-- <span class="sr-only">46.288209606987%</span> -->
+															</div>
+														</div>
+													</div>
+													<div class="w_right w_20">
+														<span><?= $open_tello['id'] ?></span>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+											</a>
+											<a href="<?= base_url('task/task') ?>">
+												<div class="widget_summary">
+													<div class="w_left w_25">
+														<span>Closed</span>
+													</div>
+													<div class="w_center w_55">
+														<div class="progress">
+															<div class="progress-bar bg-blue-sky" role="progressbar"
+																aria-valuenow="20.960698689956" aria-valuemin="0"
+																aria-valuemax="100" style="width: <?= $closed_tello['id'] ?>%;">
+																<span class="sr-only">20.960698689956%</span>
+															</div>
+														</div>
+													</div>
+													<div class="w_right w_20">
+														<span><?= $closed_tello['id'] ?></span>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+											</a>
+											<a href="<?= base_url('task/task') ?>">
+												<div class="widget_summary">
+													<div class="w_left w_25">
+														<span>Pending</span>
+													</div>
+													<div class="w_center w_55">
+														<div class="progress">
+															<div class="progress-bar bg-blue-sky" role="progressbar"
+																aria-valuenow="20.960698689956" aria-valuemin="0"
+																aria-valuemax="100" style="width: <?= $pending_tello['id'] ?>%;">
+																<span class="sr-only">20.960698689956%</span>
+															</div>
+														</div>
+													</div>
+													<div class="w_right w_20">
+														<span><?= $pending_tello['id'] ?></span>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+											</a>
+											<a href="<?= base_url('task/task') ?>">
+												<div class="widget_summary">
+													<div class="w_left w_25">
+														<span>Over Due Date</span>
+													</div>
+													<div class="w_center w_55">
+														<div class="progress">
+															<div class="progress-bar bg-blue-sky" role="progressbar"
+																aria-valuenow="20.960698689956" aria-valuemin="0"
+																aria-valuemax="100" style="width: <?= $over_due_card['id'] ?>%;">
+																<span class="sr-only">20.960698689956%</span>
+															</div>
+														</div>
+													</div>
+													<div class="w_right w_20">
+														<span><?= $over_due_card['id'] ?></span>
+													</div>
+													<div class="clearfix"></div>
+												</div>
+											</a>
+										</div>
+									</div>
+								</div>
 								<div class="clearfix"></div>
 
 
