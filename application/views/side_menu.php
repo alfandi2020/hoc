@@ -53,11 +53,11 @@
 			<ul class="nav child_menu">
 				<?php $a = $this->session->userdata('level');
 					if (strpos($a, '601') !== false) {?>
-						<li><a href="<?php echo base_url();?>app/task">Task List</a></li>
+						<li><a href="<?php echo base_url();?>task/task">Task List</a></li>
 				<?php } ?>
 				<?php $a = $this->session->userdata('level');
 					if (strpos($a, '601') !== false) {?>
-						<li><a href="<?php echo base_url();?>app/create_task">Create</a></li>
+						<li><a href="<?php echo base_url();?>task/create_task">Create</a></li>
 				<?php } ?>
 				
 			</ul>
