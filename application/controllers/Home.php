@@ -56,6 +56,12 @@ class Home extends CI_Controller
 	  $data['total'] = $result3;
 	  $data['count_inbox'] = $result;
 	  $data['read_inbox'] = $result2;
+
+		// $sql4 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
+		// $query4 = $this->db->query($sql4);
+		// $res4 = $query4->result_array();
+		// $result4 = $res4[0]['COUNT(id)'];
+		// $data['count_inbox2'] = $result4;
       $this->load->view('home_view', $data); 
     }
   } 
@@ -63,10 +69,13 @@ class Home extends CI_Controller
   {
     if ($_FILES['banner1']['name'] == true) {
       $banner = 'banner1' ;
+   
     }elseif ($_FILES['banner2']['name'] == true) {
       $banner = 'banner2' ;
+
     }elseif ($_FILES['banner3']['name'] == true) {
       $banner = 'banner3' ;
+
     }
     if($this->session->userdata('isLogin') == FALSE)
     {
@@ -79,6 +88,7 @@ class Home extends CI_Controller
                 $config['upload_path']          = './upload/banner/';
                 $config['allowed_types']        = 'jpg|png';
                 $config['file_name']        = $banner;
+                $config['encrypt_name'] = true;
                 
                 // $config['max_size']             = 100;
                 // $config['max_width']            = 1024;
@@ -123,6 +133,24 @@ class Home extends CI_Controller
                         var_dump($data);
                         // $this->load->view('upload_success', $data);
                 }
+                if ($_FILES['banner1']['name'] == true) {
+                  $banner = 'banner1' ;
+                  $insert = [
+                    "banner1" => $this->upload->data()['file_name']
+                  ];
+                }elseif ($_FILES['banner2']['name'] == true) {
+                  $banner = 'banner2' ;
+                  $insert = [
+                    "banner2" => $this->upload->data()['file_name']
+                  ];
+                }elseif ($_FILES['banner3']['name'] == true) {
+                  $banner = 'banner3' ;
+                  $insert = [
+                    "banner3" => $this->upload->data()['file_name']
+                  ];
+                }
+                $this->db->where('Id',1);
+                $this->db->update('utility',$insert);
                 redirect('home');
 
     }

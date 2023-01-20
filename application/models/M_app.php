@@ -51,25 +51,25 @@ function memo_get($limit, $start, $nip)
 function user_get($limit, $start,$nip)
 {
 	$nip = '';
-	$sql = "SELECT * FROM users where username like '%$nip%' ORDER BY id DESC limit " . $start . ", " . $limit;
+	$sql = "SELECT * FROM users ORDER BY id DESC limit " . $start . ", " . $limit;
 	$query = $this->db->query($sql);
 	return $query->result();
 }
 function user_get_detail($id)
 {
-	$nip = $this->session->userdata('nip');
-	$sql = "select users.read FROM users WHERE id =$id";
-	$query = $this->db->query($sql);
-	$result = $query->row();
-	$kalimat = $result->read;
-	if (preg_match("/$nip/i", $kalimat)){}else{
-		$kalimat1 = $kalimat . ' ' . $nip;
-		$data_update1	= array(
-			'read'	=> $kalimat1
-		);
-		$this->db->where('id', $id);
-		$this->db->update('users', $data_update1);
-	}
+	// $nip = $this->session->userdata('nip');
+	// $sql = "select users.read FROM users WHERE id =$id";
+	// $query = $this->db->query($sql);
+	// $result = $query->row();
+	// $kalimat = $result->read;
+	// if (preg_match("/$nip/i", $kalimat)){}else{
+	// 	$kalimat1 = $kalimat . ' ' . $nip;
+	// 	$data_update1	= array(
+	// 		'read'	=> $kalimat1
+	// 	);
+	// 	$this->db->where('id', $id);
+	// 	$this->db->update('users', $data_update1);
+	// }
 
 	$sql="SELECT * from users where id='$id' ";
 	$query = $this->db->query($sql);
@@ -85,6 +85,12 @@ function task_get($limit, $start, $nip)
 function memo_count($nip)
 {
 	$sql = "select Id FROM memo WHERE nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%'";
+	$query = $this->db->query($sql);
+	return $query->num_rows();
+}
+function user_count($nip)
+{
+	$sql = "SELECT id FROM users ";
 	$query = $this->db->query($sql);
 	return $query->num_rows();
 }

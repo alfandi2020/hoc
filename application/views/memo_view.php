@@ -307,7 +307,7 @@
 			<tr>
 				<td style="width:30%"><strong>Perihal</td>
 				<td> : </td>
-				<td><?php echo $memo->judul; ?></td>
+              <td><a href="<?= base_url('app/memo_view/'.$memo->Id) ?>"><?php echo $memo->judul; ?></a></td>
 			</tr>
 			</table>
 			<hr/>

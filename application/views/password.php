@@ -125,7 +125,7 @@
             <div class="col-md-3 left_col">
                <div class="left_col scroll-view">
                   <div class="navbar nav_title" style="border: 0;">
-                     <a href="<?php echo base_url();?>" class="site_title"><img src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42" width="60"><span> Harnoko</span></a>
+                     <a href="<?php echo base_url();?>" class="site_title"><img src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42" width="50"><span> Harnoko</span></a>
                   </div>
                   <div class="clearfix">
                   </div>

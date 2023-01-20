@@ -14,7 +14,7 @@
 			<a><i class="fa fa-edit"></i>BOC Digital Memo<span class="fa fa-chevron-down"></span></a>
 			<ul class="nav child_menu">
 				<?php $a = $this->session->userdata('level');
-					if (strpos($a, '402') !== false) {?>
+					if (strpos($a, '401') !== false) {?>
 						<li><a href="<?php echo base_url();?>app/create_memo">Create</a></li>
 				<?php } ?>
 				<?php $a = $this->session->userdata('level');

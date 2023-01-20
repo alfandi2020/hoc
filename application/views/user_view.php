@@ -124,7 +124,7 @@
 					<div class="navbar nav_title" style="border: 0;">
 						<a href="<?php echo base_url();?>" class="site_title"><img
 								src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42"
-								width="50"><span> Harnoko</span></a>
+								width="50"><span> Harnoko Group</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -187,7 +187,7 @@
 							</li>
 
 							<li role="presentation" class="dropdown">
-								<a href="<?php echo base_url()."app/user"; ?>" class="dropdown-toggle info-number">
+								<a href="<?php echo base_url()."app/inbox"; ?>" class="dropdown-toggle info-number">
 									<i class="fa fa-envelope-o"></i>
 									<?php if ($count_inbox==0) {?>
 									<span class="badge bg-green"><?php echo $count_inbox;?></span>
@@ -275,11 +275,11 @@
 				<div class="clearfix"></div>
 
 				<div class="x_panel card">
-					<strong>
+					<!-- <strong>
 						<font style="color:blue;font-size:24px;">BANDES</font>
 						<font style="color:green;font-size:24px;">LOGISTIK</font>
-					</strong></br>
-					<font style="font-size:17px;">PT. Harnoko Logistindo</font></br></br>
+					</strong></br> -->
+					<font style="font-size:17px;">PT. Harnoko Investama</font></br></br>
 
 					<div align="center">
 						<font style="font-size:17px;">
@@ -357,7 +357,7 @@
 						<br>
 						<?php }elseif ($this->uri->segment(3) == false) { ?> <!-- add user -->
 						<?= $this->session->flashdata('msg') ?>
-                        	<form action="<?= base_url('app/add_user/'.$this->uri->segment('3')) ?>" method="POST">
+                        <form action="<?= base_url('app/add_user') ?>" method="POST">
 							<input type="hidden" value="add" name="add">
 							<input type="hidden" value="<?= $this->uri->segment('3') ?>" name="id">
 							<table>
@@ -391,7 +391,7 @@
 								<tr>
 									<th width="200">Level</th>
 									<td>
-										<select class="form-control js-example-basic-multiple" name="level[]"
+										<select class="form-control js-example-basic-multiple2" name="level[]"
 											multiple="multiple">
 											<?php 
                                      $level_x = explode(',',$user->level);
@@ -446,7 +446,7 @@
 								<tr>
 									<th>Level Jabatan</th>
 									<td>
-										<select name="level" id="" class="form-control">
+										<select name="level_jabatan" id="" class="form-control">
 											<option disabled selected>Pilih Jabatan</option>
 											<option value="1">Staff</option>
 											<option value="2">Supervisor</option>
@@ -505,18 +505,55 @@
 							<table>
 								<tr>
 									<th width="300">Username</th>
-									<td width="300"> <input readonly type="text" name="username" class="form-control"
-											value="<?= $user->username ?>"></td>
+									<td width="300"> <input value="<?= $user->username ?>" type="text" value="<?php echo set_value('username'); ?>" name="username" class="form-control"></td>
+								</tr>
+								<!-- <tr>
+									<th width="300">Password</th>
+									<td width="300"> <input type="text" name="password" class="form-control"></td>
+								</tr>
+								<tr>
+									<th width="300">Password Confirmation</th>
+									<td width="300"> <input type="text" name="password_confirmation" class="form-control"></td>
+								</tr> -->
+								<tr>
+									<th width="200">Change Password</th>
+									<th>
+										<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Change Password</button>
+										<div class="collapse" id="collapseExample">
+											<div class="row">
+												<div class="col">
+													<label>Password</label>
+													<input type="text" class="form-control" name="password">
+												</div>
+												<div style="margin-top: 10px;" class="col">
+													<label>Password Confirmation</label>
+													<input type="text" class="form-control" name="password_confirmation">
+												</div>
+											</div>
+										</div>
+								</th>
 								</tr>
 								<tr>
 									<th width="200">Name</th>
-									<td> <input type="text" name="nama" class="form-control" value="<?= $user->nama ?>">
+									<td> <input type="text" value="<?= $user->nama ?>" name="nama" class="form-control">
 									</td>
 								</tr>
+								<?php if($this->uri->segment(4) != 'e') {  ?>
+								<tr>
+									<th width="200">Date of birth</th>
+									<td> <div class='input-group date' id='myDatepicker2'>
+									<input type='text' id='date_pic' name='tgl_lahir' class="form-control" placeholder="yyyy-mm-dd" data-validate-words="1" required="required"/>
+									<span class="input-group-addon">
+									<span class="glyphicon glyphicon-calendar"></span>
+									</span>
+									</div>
+										</td>
+								</tr>
+								<?php } ?>
 								<tr>
 									<th width="200">Level</th>
-									<td width="100%">
-										<select class="form-control js-example-basic-multiple" name="level[]"
+									<td>
+										<select class="form-control js-example-basic-multiple2" name="level[]"
 											multiple="multiple">
 											<?php 
                                      $level_x = explode(',',$user->level);
@@ -540,67 +577,83 @@
 								<tr>
 									<th>Status</th>
 									<td>
-										<input <?= $user->status ? 'checked' : '' ?> name="status" type="radio"
-											value="<?= $user->status ?>" id="active">
+										<input <?= $user->status == '1' ? 'checked' : '' ?> name="status" value="1" type="radio"
+											id="active">
 										<label for="active">Active</label>
-										<input <?= $user->status ? '' : 'checked' ?> name="status" type="radio"
-											value="<?= $user->status ?>" id="noactive">
+										<input <?= $user->status == '0' ? 'checked' : '' ?> name="status" value="0" type="radio"
+											 id="noactive">
 										<label for="noactive">Not Active</label>
 									</td>
 								</tr>
 								<tr>
 									<th width="200">Email</th>
-									<td> <input type="text" name="email" class="form-control"
-											value="<?= $user->email ?>"></td>
+									<td> <input value="<?=$user->email ?>" type="text" name="email" class="form-control"
+											></td>
 								</tr>
 								<tr>
 									<th>Phone</th>
-									<td><input type="text" name="phone" class="form-control"
-											value="<?= $user->phone ?>"></td>
+									<td><input type="text" value="<?= $user->phone ?>" name="phone" class="form-control"
+											></td>
 								</tr>
 								<tr>
 									<th>Code Agent</th>
-									<td><input type="text" name="kd_agent" class="form-control"
-											value="<?= $user->kd_agent ?>"></td>
+									<td><input type="text" value="<?= $user->kd_agent ?>" name="kd_agent" class="form-control"
+										></td>
 								</tr>
 								<tr>
 									<th>Nip</th>
-									<td><input readonly type="text" name="nip" class="form-control"
-											value="<?= $user->nip ?>"></td>
+									<td><input type="text" value="<?= $user->nip?>" name="nip" class="form-control"
+											></td>
 								</tr>
 								<tr>
 									<th>Level Jabatan</th>
-									<td><input type="text" name="phone" class="form-control"
-											value="<?= $user->level_jabatan ?>"></td>
+									<td>
+										<select name="level_jabatan" id="" class="form-control">
+											<option disabled>Pilih Jabatan</option>
+											<option <?= $user->level_jabatan == '1' ? 'selected' : '' ?> value="1">Staff</option>
+											<option <?= $user->level_jabatan == '2' ? 'selected' : '' ?> value="2">Supervisor</option>
+											<option <?= $user->level_jabatan == '3' ? 'selected' : '' ?> value="3">Manajer</option>
+											<option <?= $user->level_jabatan == '4' ? 'selected' : '' ?> value="4">General Manajer</option>
+											<option <?= $user->level_jabatan == '5' ? 'selected' : '' ?> value="5">Direktur</option>
+											<option <?= $user->level_jabatan == '6' ? 'selected' : '' ?> value="6">Direktur Utama</option>
+										</select>
+									</td>
 								</tr>
 								<tr>
 									<th>Bagian</th>
 									<td>
 										<select name="bagian" class="form-control" id="">
 											<?php $xx = $this->db->get('bagian')->result();
-                                            foreach ($xx as $k) {?>
+                                            foreach ($xx as $k) {
+                                                if (!empty($user)) {
+                                                ?>
 											<option <?= $k->Id == $user->bagian ? 'selected' : '' ?>
 												value="<?= $k->Id ?>"><?= $k->nama ?></option>
-											<?php } ?>
+											<?php }else{?>
+                                                <option 
+												value="<?= $k->Id ?>"><?= $k->nama ?></option>
+                                            <?php } 
+                                            }?>
 										</select>
 									</td>
 								</tr>
 								<tr>
 									<th>Nama Jabatan</th>
-									<td><input type="text" name="nama_jabatan" class="form-control"
-											value="<?= $user->nama_jabatan ?>"></td>
+									<td><input type="text" value="<?= $user->nama_jabatan ?>" name="nama_jabatan" class="form-control"
+											></td>
 								</tr>
 								<tr>
 									<th>Supervisi</th>
-									<td><input type="text" name="supervisi" class="form-control"
-											value="<?= $user->supervisi ?>"></td>
+									<td><input type="text" value="<?= $user->supervisi ?>" name="supervisi" class="form-control"
+											></td>
 								</tr>
 								<tr>
 									<th>
 										<a class="btn btn-warning" href="<?= base_url('app/user') ?>"><i
 												class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
-										<button type="submit" class="btn btn-primary">Update</button>
 									</th>
+									<td><button type="submit" class="btn btn-primary">Submit</button></td>
+
 								</tr>
 							</table>
 						</form>
@@ -668,6 +721,7 @@
 				<script>
 					$(document).ready(function () {
 						$('.js-example-basic-multiple').select2();
+						$('.js-example-basic-multiple2').select2();
 					});
 					window.setTimeout(function () {
 						$(".alert-success").fadeTo(500, 0).slideUp(500, function () {

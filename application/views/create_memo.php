@@ -456,10 +456,21 @@
 							<div class="col-md-12 col-sm-12 col-xs-12">
 							<textarea class="ckeditor" name="ckeditor" id="ckeditor">
 								<?php
+								if ($this->uri->segment(3) == true) {
+
+									$array_bln = array(1=>"I","II","III", "IV", "V","VI","VII","VIII","IX","X", "XI","XII");
+									$bln = $array_bln[date('n',strtotime($memo->tanggal))];
+								}
 									if (!empty($memo->isi_memo)){
 										echo ('<br><hr/>');
 										echo ('<br> created by. '); $nip = $memo->nip_dari;
-										$query = $this->db->query("SELECT nama,nama_jabatan FROM users WHERE nip='$nip';")->row()->nama; echo $query;
+
+										$query = $this->db->query("SELECT nama,nama_jabatan FROM users WHERE nip='$nip';")->row()->nama; echo $query; 
+										if ($this->uri->segment(3) == true) {
+											echo "<br>";
+											echo "No Memo : ". sprintf("%03d",$memo->nomor_memo) . '/E-MEMO/' . $memo->kode_nama . '/'.$bln.'/'. date('Y',strtotime($memo->tanggal));
+										
+										}
 										echo $memo->isi_memo;
 									}
 								?>

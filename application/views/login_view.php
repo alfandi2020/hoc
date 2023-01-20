@@ -12,7 +12,7 @@
 
       <!--===============================================================================================-->	
 
-      <link rel="icon" type="image/png" href="<?php echo base_url();?>login_lib/images/icons/pm_256.png"/>
+      <link rel="icon" type="image/png" href="<?php echo base_url();?>img/logo_h.png"/>
 
       <!--===============================================================================================-->
 
@@ -112,7 +112,7 @@
 
 				  </div>
 
-				  <br><div class="text-center"><font color="white">IT Harnoko &copy;2022</font></div>
+				  <br><div class="text-center"><font color="#54585b">Harnoko Office Communication &copy;2022</font></div>
 
 
             </div>

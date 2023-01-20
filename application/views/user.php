@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
-    <title>BDL CORE | Business Development</title>
+    <title>HOC | Business Development</title>
     <!-- Bootstrap -->
     <link href="<?php echo base_url();?>src/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -92,7 +92,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="<?php echo base_url();?>" class="site_title"><img src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42" width="60"><span> Harnoko</span></a>
+              <a href="<?php echo base_url();?>" class="site_title"><img src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42" width="50"><span> Harnoko Group</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -151,7 +151,7 @@
                 </li>
 
                 <li role="presentation" class="dropdown">
-                  <a href="<?php echo base_url()."app/user"; ?>" class="dropdown-toggle info-number">
+                  <a href="<?php echo base_url()."app/inbox"; ?>" class="dropdown-toggle info-number">
                     <i class="fa fa-envelope-o"></i>
 					<?php if ($count_inbox==0) {?>
 						<span class="badge bg-green"><?php echo $count_inbox;?></span>
@@ -300,9 +300,9 @@
 				<tbody>
 				<tr>
 					<?php 
-					$nip = $this->session->userdata('nip');
-					$kalimat = $data->read;
-					if (preg_match("/$nip/i", $kalimat)) { ?>
+					//$nip = $this->session->userdata('nip');
+					//$kalimat = $data->read;
+					//if (preg_match("/$nip/i", $kalimat)) { ?>
 						<p style="font-weight: normal;">
 						<td><?php echo $no; ?></td>
 						<td><?php echo $data->nama; ?></td>
@@ -318,32 +318,13 @@
 							<a class="btn btn-dark btn-xs" href="<?= base_url('app/user_view/'.$data->id) ?>">Open</a>
 							<a class="btn btn-warning btn-xs" href="<?= base_url('app/user_edit/'.$data->id.'/e') ?>">Edit</a>
 						</td>
-					<?php }else{ ?>
-            <p style="font-weight: normal;">
-						<td><p style="font-weight: bold;"><?php echo $no; ?></p></td>
-						<td><p style="font-weight: bold;"><?php echo $data->nama; ?></p></td>
-						<td><p style="font-weight: bold;"><?php echo $data->username; ?></p></td>
-						<td><p style="font-weight: bold;"><?php echo $data->level; ?></p></td>
-						<td><p style="font-weight: bold;"><?php echo $data->nip; ?></p></td>
-						<td><p style="font-weight: bold;"><?php echo $data->status; ?></p></td>
-						
-						<td>
-							<!-- <form action="<?php echo base_url()."app/user_view/".$data->id; ?>" target="">
-								<button type="submit" class="btn btn-dark btn-xs">Open</button>
-							</form> -->
-							<a class="btn btn-dark btn-xs" href="<?= base_url('app/user_view/'.$data->id) ?>">Open</a>
-							<a class="btn btn-warning btn-xs" href="<?= base_url('app/user_edit/'.$data->id.'/e') ?>">Edit</a>
-						</td>
-					<!--td>
-						<form action="<?php echo base_url()."app/surat_keluar_edit/".$data->id; ?>">
-							<button type="submit" class="btn btn-warning btn-xs">Edit</button>
-						</form>
-					</td-->
+					<?php //} ?>
+            
 				</tr>
 				</tbody>
 				
 			<?php
-          }
+         // }
 			$no++;
 			endforeach;} 
 			?>

@@ -190,7 +190,7 @@ public function create_memo()
 	{redirect('home');}
 	else{
 	$a = $this->session->userdata('level');
-	if (strpos($a, '402')!== false) {
+	if (strpos($a, '401')!== false) {
 		$data['sendto'] = $this->m_app->sendto($this->session->userdata('level_jabatan'),$this->session->userdata('bagian'));
 		
 		//inbox notif
@@ -212,15 +212,19 @@ public function create_memo_approve()
 	else{
 	$a = $this->session->userdata('level');
 	$nip = $this->session->userdata('nip');
-	if (strpos($a, '402')!== false) {
+	if (strpos($a, '401')!== false) {
 		$memo_id = $this->uri->segment(3);
 		$data['sendto'] = $this->m_app->sendto($this->session->userdata('level_jabatan'),$this->session->userdata('bagian'));
-		$sql = "select * FROM memo WHERE Id =$memo_id AND (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%')";
+		// $sql = "select * FROM memo WHERE Id =$memo_id AND (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%')";
+		$sql = "SELECT a.*,b.nama_jabatan,b.nama,b.supervisi,c.kode_nama,b.level_jabatan 
+		FROM memo a
+		LEFT JOIN users b ON a.nip_dari = b.nip
+		LEFT JOIN bagian c ON b.bagian = c.kode
+		WHERE (a.id = '$memo_id' AND (a.nip_dari LIKE '%$nip%' OR a.nip_kpd LIKE '%$nip%' OR a.nip_cc LIKE '%$nip%'))";
 			$result = $this->db->query($sql);
 			$count=$result->num_rows;
 			if ($count==0){
 				$data['memo'] = $result->row();
-				
 				//inbox notif
 				$nip = $this->session->userdata('nip');
 				$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
@@ -367,7 +371,7 @@ public function simpan_memo()
 	{redirect('home');}
 	else{
 	$a = $this->session->userdata('level');
-	if (strpos($a, '402')!== false) {
+	if (strpos($a, '401')!== false) {
 		$this->form_validation->set_rules('tujuan_memo[]', 'tujuan_memo', 'required');
 		$this->form_validation->set_rules('cc_memo[]', 'cc_memo');
 		$this->form_validation->set_rules('subject_memo', 'subject_memo', 'required|trim');
@@ -488,7 +492,7 @@ public function simpan_memo()
 public function memo_pdf()
 {
 	$a = $this->session->userdata('level');
-	if (strpos($a, '302')!== false) {
+	if (strpos($a, '401')!== false) {
 		//script disini
 		
 		$id=$this->uri->segment(3);	
@@ -638,7 +642,7 @@ public function user_cari()
 		$result = $res2[0]['COUNT(Id)'];
 		$data['count_inbox'] = $result;
 		
-		$this->load->view('inbox_view', $data);
+		$this->load->view('user', $data);
 	}
 	}
 }
@@ -1146,7 +1150,7 @@ public function user()
 	if (strpos($a, '401')!== false) {
 		//pagination settings
 		$config['base_url'] = site_url('app/user');
-		$config['total_rows'] = $this->m_app->memo_count($this->session->userdata('nip'));
+		$config['total_rows'] = $this->m_app->user_count($this->session->userdata('nip'));
 		$config['per_page'] = "10";
 		$config["uri_segment"] = 3;
 		$choice = $config["total_rows"]/$config["per_page"];
@@ -1178,10 +1182,11 @@ public function user()
 		
 		//inbox notif
 		$nip = $this->session->userdata('nip');
-		$sql = "SELECT COUNT(id) FROM users WHERE (nip LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%')";
+		// $sql = "SELECT COUNT(id) FROM memo WHERE (nip LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%')";
+		$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
 		$query = $this->db->query($sql);
 		$res2 = $query->result_array();
-		$result = $res2[0]['COUNT(id)'];
+		$result = $res2[0]['COUNT(Id)'];
 		$data['count_inbox'] = $result;
 		
 		$this->load->view('user', $data);
@@ -1214,12 +1219,13 @@ public function user_view()
 }
 public function add_user()
 {
+		//inbox notif
 		$nip = $this->session->userdata('nip');
-		$sql = "SELECT COUNT(id) FROM users WHERE (nip LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%')";
-			$query = $this->db->query($sql);
-			$res2 = $query->result_array();
-			$result = $res2[0]['COUNT(id)'];
-			$data['count_inbox'] = $result;
+		$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
+		$query = $this->db->query($sql);
+		$res2 = $query->result_array();
+		$result = $res2[0]['COUNT(Id)'];
+		$data['count_inbox'] = $result;
 			
 		if ($this->input->post('add') == 'add') {
 			$today = date("Y-m-d");
@@ -1227,6 +1233,14 @@ public function add_user()
 			$this->form_validation->set_rules('nama', 'Nama', 'required|trim');
 			if($this->form_validation->run() === false){
 				$this->session->set_flashdata('msg','<div class="alert alert-danger">tidak boleh kosong</div>');
+				
+				//inbox notif
+				$nip = $this->session->userdata('nip');
+				$sql = "SELECT COUNT(Id) FROM memo WHERE (nip_kpd LIKE '%$nip%' OR nip_cc LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%');";
+				$query = $this->db->query($sql);
+				$res2 = $query->result_array();
+				$result = $res2[0]['COUNT(Id)'];
+				$data['count_inbox'] = $result;
 
 				$this->load->view('user_view',$data);
 
@@ -1283,13 +1297,30 @@ public function user_edit()
 			//inbox notif
 			$nip = $this->session->userdata('nip');
 			$sql = "SELECT COUNT(id) FROM users WHERE (nip LIKE '%$nip%') AND (`read` NOT LIKE '%$nip%')";
-
+			
 			$query = $this->db->query($sql);
 			$res2 = $query->result_array();
 			$result = $res2[0]['COUNT(id)'];
 			$data['count_inbox'] = $result;
 			
 			if ($this->input->post('edit') == 'edit') {
+				if ($this->input->post('password') && $this->input->post('password_confirmation') ) {
+					if ($this->input->post('password') != $this->input->post('password_confirmation')) {
+						$this->session->set_flashdata('msg','<div class="alert alert-danger">Password harus sama..!</div>');
+						redirect('app/user_edit/'.$this->uri->segment(3).'/e');
+					}else{
+						$change_password = [
+							"password" => password_hash($this->input->post('password'),PASSWORD_DEFAULT)
+						];
+						$this->db->where('id',$this->uri->segment(3));
+						$this->db->update('users',$change_password);
+						$this->session->set_flashdata('msg','<div class="alert alert-success">Password berhasil di ubah '.$this->input->post('nama').'</div>');
+						redirect('app/user_edit/'.$this->uri->segment(3).'/e');
+					}
+				}
+				// $today = date('Y-m-d');
+				// $diff = date_diff(date_create($this->input->post('tgl_lahir')), date_create($today));
+			
 				$id_edit = $this->input->post('id');
 				$ex_level = implode(',',$this->input->post('level'));
 				$edit_data = [
@@ -1307,12 +1338,12 @@ public function user_edit()
 					"nama_jabatan" => $this->input->post('nama_jabatan'),
 					"supervisi" => $this->input->post('supervisi'),
 				];
-				$this->db->where('id',$id_edit);
+				$this->db->where('id',$this->uri->segment(3));
 				$this->db->update('users',$edit_data);
 				$this->session->set_flashdata('msg','<div class="alert alert-success">Update User '.$this->input->post('nama').'</div>');
 				redirect('app/user_edit/'.$id_edit.'/e');
 			}
-			$this->load->view('user_view',$data);
+				$this->load->view('user_view',$data);
 		}
 	}
 	}

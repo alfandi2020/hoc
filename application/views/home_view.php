@@ -58,7 +58,6 @@
 			display: flex;
   			justify-content: center;
 		}
-
 	</style>
 </head>
 
@@ -113,9 +112,7 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-						<a href="<?php echo base_url();?>" class="site_title"><img
-								src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42"
-								width="50"><span> Harnoko</span></a>
+					  <a href="<?php echo base_url();?>" class="site_title"><img src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42" width="50"><span> Harnoko Group</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -189,64 +186,66 @@
 									<?php }?>
 								</a>
 								<!--ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul-->
+									<li>
+									<a>
+										<span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
+										<span>
+										<span>John Smith</span>
+										<span class="time">3 mins ago</span>
+										</span>
+										<span class="message">
+										Film festivals used to be do-or-die moments for movie makers. They were where...
+										</span>
+									</a>
+									</li>
+									<li>
+									<a>
+										<span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
+										<span>
+										<span>John Smith</span>
+										<span class="time">3 mins ago</span>
+										</span>
+										<span class="message">
+										Film festivals used to be do-or-die moments for movie makers. They were where...
+										</span>
+									</a>
+									</li>
+									<li>
+									<a>
+										<span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
+										<span>
+										<span>John Smith</span>
+										<span class="time">3 mins ago</span>
+										</span>
+										<span class="message">
+										Film festivals used to be do-or-die moments for movie makers. They were where...
+										</span>
+									</a>
+									</li>
+									<li>
+									<a>
+										<span class="image"><img src="<?php echo base_url();?>src/images/img.jpg" alt="Profile Image" /></span>
+										<span>
+										<span>John Smith</span>
+										<span class="time">3 mins ago</span>
+										</span>
+										<span class="message">
+										Film festivals used to be do-or-die moments for movie makers. They were where...
+										</span>
+									</a>
+									</li>
+									<li>
+									<div class="text-center">
+										<a>
+										<strong>See All Alerts</strong>
+										<i class="fa fa-angle-right"></i>
+										</a>
+									</div>
+									</li>
+								</ul-->
 							</li>
+							<?php //include 'notif_tello.php' ?>
+
 						</ul>
 					</nav>
 				</div>
@@ -258,21 +257,21 @@
 				<div class="container">
 					<div class="page-title">
 						<div class="title_left">
-							<h3>Dashboard 2022</h3>
 						</div>
 					</div>
 					<div class="clearfix"></div>
-						<div class="row justify-content-center">
-							<div class="col-md-8">
+					<div class="row justify-content-center">
+							<div class="col-md-8 col-sm-8 col-xs-12">
 								<div class="owl-carousel owl-theme">
+									<?php $bg = $this->db->get_where('utility',['Id'=>1])->row_array() ?>
 									<div class="item">
-										<img style="height: 400px;" src="<?= base_url('upload/banner/banner1.png') ?>" alt="">
+										<img style="height: 400px;" src="<?= base_url('upload/banner/'.$bg['banner1']) ?>" alt="">
 									</div>
 									<div class="item">
-										<img style="height: 400px;" src="<?= base_url('upload/banner/banner2.png') ?>" alt="">
+										<img style="height: 400px;" src="<?= base_url('upload/banner/'.$bg['banner2']) ?>" alt="">
 									</div>
 									<div class="item">
-										<img style="height: 400px;" src="<?= base_url('upload/banner/banner3.png') ?>" alt="">
+										<img style="height: 400px;" src="<?= base_url('upload/banner/'.$bg['banner3']) ?>" alt="">
 									</div>
 									
 								</div>
@@ -314,7 +313,7 @@
 								</div>
 							</div>
 						</div>
-						<?php }  ?>
+						<?php } ?>
 						<br>
 					<div class="row">
 						<div class="col-md-8 col-sm-8 col-xs-12">
