@@ -438,12 +438,7 @@ public function save_task()
 			redirect('task/create_task');
 			// echo "<script>alert('error input!');window.location.href = '" . base_url() . "task/create_memo';</script>";
 		} else {
-			//send notif ke create task
-			$get_user = $this->db->get_where('users',['nip' => $this->session->userdata('nip')])->row_array();
-			$nama_session = $this->session->userdata('nama');
-			$project = $this->input->post('project_name');
-			$msg = "There's a new task\nProject Name : *$project*\n\nCreated By :  *$nama_session*";
-			$this->api_whatsapp->wa_notif($msg,$get_user['phone']);
+			
 			date_default_timezone_set('Asia/Jakarta');
 			//simpan memo
 				$member_task=''; 
@@ -461,6 +456,14 @@ public function save_task()
 					$project = $this->input->post('project_name');
 					$msg = "There's a new task\nProject Name : *$project*\n\nCreated By :  *$nama_session*";
 					$this->api_whatsapp->wa_notif($msg,$get_user['phone']);
+					if ($this->session->userdata('nip') == $value1) {
+						//send notif ke create task
+						$get_user = $this->db->get_where('users',['nip' => $this->session->userdata('nip')])->row_array();
+						$nama_session = $this->session->userdata('nama');
+						$project = $this->input->post('project_name');
+						$msg = "There's a new task\nProject Name : *$project*\n\nCreated By :  *$nama_session*";
+						$this->api_whatsapp->wa_notif($msg,$get_user['phone']);
+					}
 				}
 			}
 			
@@ -707,6 +710,13 @@ function update_task()
 							"member" => $this->session->userdata('nip')
 						];
 						$this->db->insert('task_detail_comment',$comment_detail);
+						//notif wa
+						$get_task2 = $this->db->get_where('task',['id' => $id_task])->row_array();
+						$get_user = $this->db->get_where('users',['nip' => $this->session->userdata('nip')])->row_array();
+						$nama_session = $this->session->userdata('nama');
+						$project = $this->input->post('project_name');
+						$msg = "There's a new card\nCard Name : *".$this->input->post('project_name'.$i)."*\nProject Name : *".$get_task2['name']."*\n\nCreated By :  *$nama_session*";
+						$this->api_whatsapp->wa_notif($msg,$get_user['phone']);
 				}
 			}
 			redirect('task/task_view/'.$id_card);
