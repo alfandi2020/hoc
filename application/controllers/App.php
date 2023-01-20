@@ -605,6 +605,12 @@ public function inbox_cari()
 		$result = $res2[0]['COUNT(Id)'];
 		$data['count_inbox'] = $result;
 		
+		$sql3 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
+		$query3 = $this->db->query($sql3);
+		$res3 = $query3->result_array();
+		$result3 = $res3[0]['COUNT(id)'];
+		$data['count_inbox2'] = $result3;
+		
 		$this->load->view('inbox_view', $data);
 	}
 	}
@@ -667,6 +673,12 @@ public function user_cari()
 		$res2 = $query->result_array();
 		$result = $res2[0]['COUNT(Id)'];
 		$data['count_inbox'] = $result;
+		
+		$sql3 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
+		$query3 = $this->db->query($sql3);
+		$res3 = $query3->result_array();
+		$result3 = $res3[0]['COUNT(id)'];
+		$data['count_inbox2'] = $result3;
 		
 		$this->load->view('user', $data);
 	}
@@ -731,6 +743,12 @@ public function send_cari()
 		$res2 = $query->result_array();
 		$result = $res2[0]['COUNT(Id)'];
 		$data['count_inbox'] = $result;
+		
+		$sql3 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
+		$query3 = $this->db->query($sql3);
+		$res3 = $query3->result_array();
+		$result3 = $res3[0]['COUNT(id)'];
+		$data['count_inbox2'] = $result3;
 		
 		$this->load->view('inbox_view', $data);
 	}
