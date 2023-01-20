@@ -54,10 +54,12 @@
 		}
 
 		body {}
+
 		.justify-content-center {
 			display: flex;
-  			justify-content: center;
+			justify-content: center;
 		}
+
 	</style>
 </head>
 
@@ -112,7 +114,9 @@
 			<div class="col-md-3 left_col">
 				<div class="left_col scroll-view">
 					<div class="navbar nav_title" style="border: 0;">
-					  <a href="<?php echo base_url();?>" class="site_title"><img src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42" width="50"><span> Harnoko Group</span></a>
+						<a href="<?php echo base_url();?>" class="site_title"><img
+								src="<?php echo base_url();?>img/logo-harnoko3_logo.png" alt="..." height="42"
+								width="50"><span> Harnoko Group</span></a>
 					</div>
 
 					<div class="clearfix"></div>
@@ -261,63 +265,100 @@
 					</div>
 					<div class="clearfix"></div>
 					<div class="row justify-content-center">
-							<div class="col-md-8 col-sm-8 col-xs-12">
-								<div class="owl-carousel owl-theme">
-									<?php $bg = $this->db->get_where('utility',['Id'=>1])->row_array() ?>
-									<div class="item">
-										<img style="height: 400px;" src="<?= base_url('upload/banner/'.$bg['banner1']) ?>" alt="">
-									</div>
-									<div class="item">
-										<img style="height: 400px;" src="<?= base_url('upload/banner/'.$bg['banner2']) ?>" alt="">
-									</div>
-									<div class="item">
-										<img style="height: 400px;" src="<?= base_url('upload/banner/'.$bg['banner3']) ?>" alt="">
-									</div>
-									
+						<div class="col-md-8 col-sm-8 col-xs-12">
+							<div class="owl-carousel owl-theme">
+								<?php $bg = $this->db->get_where('utility',['Id'=>1])->row_array() ?>
+								<div class="item">
+									<img style="height: 400px;" src="<?= base_url('upload/banner/'.$bg['banner1']) ?>"
+										alt="">
 								</div>
+								<div class="item">
+									<img style="height: 400px;" src="<?= base_url('upload/banner/'.$bg['banner2']) ?>"
+										alt="">
+								</div>
+								<div class="item">
+									<img style="height: 400px;" src="<?= base_url('upload/banner/'.$bg['banner3']) ?>"
+										alt="">
+								</div>
+								<div class="item">
+									<img style="height: 400px;" src="<?= base_url('upload/banner/'.$bg['banner4']) ?>"
+										alt="">
+								</div>
+								<div class="item">
+									<img style="height: 400px;" src="<?= base_url('upload/banner/'.$bg['banner5']) ?>"
+										alt="">
+								</div>
+
 							</div>
 						</div>
-						<?php
+					</div>
+					<?php
 							$a = $this->session->userdata('level');
 						if (strpos($a, '40') !== false) {?>
-						<div class="row justify-content-center">
-							<div class="col-md-8">
-								<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+					<div class="row justify-content-center">
+						<div class="col-md-8">
+							<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
+								aria-expanded="false" aria-controls="collapseExample">
 								Add Banner
-								</a>
-								<div class="collapse" id="collapseExample">
-									<div class="cardmb-2">
-										<div class="card-body">
+							</a>
+							<div class="collapse" id="collapseExample">
+								<div class="cardmb-2">
+									<div class="card-body">
 										<div class="item group row">
 											<div class="col-md-4">
-												<form method="POST" action="<?= base_url('home/banner') ?>" enctype="multipart/form-data">
+												<form method="POST" action="<?= base_url('home/banner') ?>"
+													enctype="multipart/form-data">
 													<span>Banner 1</span>
-													<input type="file"  onchange="this.form.submit()" class="form-control" name="banner1">
+													<input type="file" onchange="this.form.submit()"
+														class="form-control" name="banner1">
 												</form>
 											</div>
 											<div class="col-md-4">
-												<form method="POST" action="<?= base_url('home/banner') ?>" enctype="multipart/form-data">
-												<span>Banner 2</span>
-													<input type="file" onchange="this.form.submit()" class="form-control" name="banner2">
+												<form method="POST" action="<?= base_url('home/banner') ?>"
+													enctype="multipart/form-data">
+													<span>Banner 2</span>
+													<input type="file" onchange="this.form.submit()"
+														class="form-control" name="banner2">
 												</form>
 											</div>
-												<form method="POST" action="<?= base_url('home/banner') ?>" enctype="multipart/form-data">
 											<div class="col-md-4">
-											<span>Banner 3</span>
-												<input type="file" onchange="this.form.submit()" class="form-control" name="banner3">
+												<form method="POST" action="<?= base_url('home/banner') ?>"
+												enctype="multipart/form-data">
+													<span>Banner 3</span>
+													<input type="file" onchange="this.form.submit()"
+														class="form-control" name="banner3">
+												</form>
 											</div>
-											</form>
 										</div>
+										<br>
+										<div class="row">
+										<div class="col-md-4">
+												<form method="POST" action="<?= base_url('home/banner') ?>"
+													enctype="multipart/form-data">
+													<span>Banner 4</span>
+													<input type="file" onchange="this.form.submit()"
+														class="form-control" name="banner4">
+												</form>
+											</div>
+											<div class="col-md-4">
+												<form method="POST" action="<?= base_url('home/banner') ?>"
+												enctype="multipart/form-data">
+													<span>Banner 5</span>
+													<input type="file" onchange="this.form.submit()"
+														class="form-control" name="banner5">
+												</form>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<?php } ?>
-						<br>
+					</div>
+					<?php } ?>
+					<br>
 					<div class="row">
 						<div class="col-md-8 col-sm-8 col-xs-12">
-						
+
 							<div class="row">
 								<!-- <div class="col-md-6 col-sm-6 col-xs-12">
 									<div class="x_panel tile fixed_height_300">
@@ -382,7 +423,8 @@
 														<div class="progress">
 															<div class="progress-bar bg-blue-sky" role="progressbar"
 																aria-valuenow="46.288209606987" aria-valuemin="0"
-																aria-valuemax="100" style="width: <?= $count_inbox ?>%;">
+																aria-valuemax="100"
+																style="width: <?= $count_inbox ?>%;">
 																<span class="sr-only">46.288209606987%</span>
 															</div>
 														</div>
@@ -497,7 +539,7 @@
 					items: 1,
 					nav: true,
 					loop: true,
-					autoplay:true,
+					autoplay: true,
 				}
 			}
 		})
