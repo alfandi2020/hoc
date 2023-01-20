@@ -312,7 +312,7 @@
 										<input style="border-radius: 5px;" type="hidden" name="id_task" value="<?= $this->uri->segment(3) ?>">
 										<div class="item form-group">
 											<label style="text-align: left;"
-												class="control-label col-md-3 col-sm-3 col-xs-12">Task Name</label>
+												class="control-label col-md-3 col-sm-3 col-xs-12">Card Name</label>
 											<div class="col-md-6 col-sm-6 col-xs-12">
 												<input style="border-radius: 5px;" type="text" class="form-control"
 													name="project_name1" >
