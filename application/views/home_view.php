@@ -301,7 +301,7 @@
 													<input type="file" onchange="this.form.submit()" class="form-control" name="banner2">
 												</form>
 											</div>
-											<form method="POST" action="<?= base_url('home/banner') ?>" enctype="multipart/form-data">
+												<form method="POST" action="<?= base_url('home/banner') ?>" enctype="multipart/form-data">
 											<div class="col-md-4">
 											<span>Banner 3</span>
 												<input type="file" onchange="this.form.submit()" class="form-control" name="banner3">

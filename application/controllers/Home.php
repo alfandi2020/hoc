@@ -67,7 +67,7 @@ class Home extends CI_Controller
   } 
   function banner()
   {
-    if ($_FILES['banner1']['name'] == true) {
+		if ($_FILES['banner1']['name'] == true) {
       $banner = 'banner1' ;
    
     }elseif ($_FILES['banner2']['name'] == true) {
@@ -75,7 +75,11 @@ class Home extends CI_Controller
 
     }elseif ($_FILES['banner3']['name'] == true) {
       $banner = 'banner3' ;
+    }elseif ($_FILES['banner4']['name'] == true) {
+      $banner = 'banner4' ;
 
+    }elseif ($_FILES['banner5']['name'] == true) {
+      $banner = 'banner5' ;
     }
     if($this->session->userdata('isLogin') == FALSE)
     {
@@ -87,7 +91,7 @@ class Home extends CI_Controller
                 // $banner3 = $_FILES['banner3']['name'];
                 $config['upload_path']          = './upload/banner/';
                 $config['allowed_types']        = 'jpg|png';
-                $config['file_name']        = $banner;
+                // $config['file_name']        = $banner;
                 $config['encrypt_name'] = true;
                 
                 // $config['max_size']             = 100;
@@ -96,43 +100,54 @@ class Home extends CI_Controller
 
                 $this->load->library('upload', $config);
 
-                if (!$this->upload->do_upload('banner1'))
-                {
+                if (!$this->upload->do_upload('banner1')){
                         $error = array('error' => $this->upload->display_errors());
                       var_dump($error);
                         // $this->load->view('upload_form', $error);
-                }
-                else
-                {
+                }else{
                         $data = array('upload_data' => $this->upload->data());
                         var_dump($data);
                         // $this->load->view('upload_success', $data);
                 }
 
-                if (!$this->upload->do_upload('banner2'))
-                {
+                if (!$this->upload->do_upload('banner2')){
                         $error = array('error' => $this->upload->display_errors());
                       var_dump($error);
                         // $this->load->view('upload_form', $error);
-                }
-                else
-                {
+                }else{
                         $data = array('upload_data' => $this->upload->data());
                         var_dump($data);
                         // $this->load->view('upload_success', $data);
                 }
-                if (!$this->upload->do_upload('banner3'))
-                {
+								if (!$this->upload->do_upload('banner3')){
                         $error = array('error' => $this->upload->display_errors());
                       var_dump($error);
                         // $this->load->view('upload_form', $error);
-                }
-                else
-                {
+                }else{
                         $data = array('upload_data' => $this->upload->data());
                         var_dump($data);
                         // $this->load->view('upload_success', $data);
                 }
+								
+                if (!$this->upload->do_upload('banner4')){
+                        $error = array('error' => $this->upload->display_errors());
+                      var_dump($error);
+                        // $this->load->view('upload_form', $error);
+                }else{
+                        $data = array('upload_data' => $this->upload->data());
+                        var_dump($data);
+                        // $this->load->view('upload_success', $data);
+                }
+								if (!$this->upload->do_upload('banner5')){
+                        $error = array('error' => $this->upload->display_errors());
+                      var_dump($error);
+                        // $this->load->view('upload_form', $error);
+                }else{
+                        $data = array('upload_data' => $this->upload->data());
+                        var_dump($data);
+                        // $this->load->view('upload_success', $data);
+                }
+
                 if ($_FILES['banner1']['name'] == true) {
                   $banner = 'banner1' ;
                   $insert = [
@@ -148,13 +163,22 @@ class Home extends CI_Controller
                   $insert = [
                     "banner3" => $this->upload->data()['file_name']
                   ];
+                }elseif ($_FILES['banner4']['name'] == true) {
+                  $banner = 'banner4' ;
+                  $insert = [
+                    "banner4" => $this->upload->data()['file_name']
+                  ];
+                }elseif ($_FILES['banner5']['name'] == true) {
+                  $banner = 'banner5' ;
+                  $insert = [
+                    "banner5" => $this->upload->data()['file_name']
+                  ];
                 }
                 $this->db->where('Id',1);
                 $this->db->update('utility',$insert);
                 redirect('home');
 
     }
-
   }
   
 }

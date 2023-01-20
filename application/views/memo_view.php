@@ -335,12 +335,12 @@
 					<td style="vertical-align:bottom"><?php echo $memo->nama;?></td>
 					<td style="vertical-align:bottom">
 					<form action="<?php echo base_url()."app/create_memo_approve/".$memo->Id ."/x"; ?>" target="">
-						<button type="submit" class="btn btn-primary">Replay</button>
+						<button type="submit" class="btn btn-primary">Reply</button>
 					</form>
 					</td>
 					<td style="vertical-align:bottom">
 					<form action="<?php echo base_url()."app/create_memo_approve/".$memo->Id; ?>" target="">
-						<button type="submit" class="btn btn-primary">Replay All</button>
+						<button type="submit" class="btn btn-primary">Reply All</button>
 					</form>
 					</td>
 					<td style="vertical-align:bottom"><a href="<?= base_url('app/memo_pdf/'.$memo->Id) ?>" class="btn btn-warning">Cetak PDF</a></td>
