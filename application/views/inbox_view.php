@@ -319,8 +319,8 @@
 						$last = $arr_kpd[0];
 						$sql="SELECT nama FROM users WHERE nip='$last';";
 						$query = $this->db->query($sql);
-						$result = $query->row();
-						echo $result->nama;
+						$result = $query->row_array();
+						echo $result['nama'];
 						}else{
 							echo $data->nama;
 						}?></td>
