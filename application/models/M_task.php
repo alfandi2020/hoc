@@ -50,7 +50,7 @@ class M_task extends CI_Model
     function task_cari_count($st = NULL,$nip)
     {
         if ($st == "NIL") $st = "";
-        $sql = "select id_detail FROM task_detail WHERE (name LIKE '%$st%')";
+        $sql = "select id_detail FROM task_detail WHERE (task_name LIKE '%$st%')";
         $query = $this->db->query($sql);
         return $query->num_rows();
     }
