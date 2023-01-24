@@ -240,6 +240,12 @@ public function create_memo_approve()
 				$result = $res2[0]['COUNT(Id)'];
 				$data['count_inbox'] = $result;
 				
+				$sql3 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
+				$query3 = $this->db->query($sql3);
+				$res3 = $query3->result_array();
+				$result3 = $res3[0]['COUNT(id)'];
+				$data['count_inbox2'] = $result3;
+				
 				$this->load->view('create_memo', $data);
 			}
 	}
