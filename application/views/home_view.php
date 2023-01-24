@@ -294,7 +294,7 @@
 					</div>
 					<?php
 							$a = $this->session->userdata('level');
-						if (strpos($a, '40') !== false) {?>
+						if (strpos($a, '999') !== false) {?>
 					<div class="row justify-content-center">
 						<div class="col-md-8">
 							<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button"
