@@ -403,22 +403,22 @@ public function simpan_memo()
 			{
 				$nip_kpd .= $value.';';
 				//send notif wa boc
-				$get_user = $this->db->get_where('users',['nip' => $value])->row_array();
-				$nama_session = $this->session->userdata('nama');
-				$subject_memo = $this->input->post('subject_memo');
-				$msg = "There's a new Memo\nBOC From : *$nama_session*\nSubject :  *$subject_memo*";
-				$this->api_whatsapp->wa_notif($msg,$get_user['phone']);
+				// $get_user = $this->db->get_where('users',['nip' => $value])->row_array();
+				// $nama_session = $this->session->userdata('nama');
+				// $subject_memo = $this->input->post('subject_memo');
+				// $msg = "There's a new Memo\nBOC From : *$nama_session*\nSubject :  *$subject_memo*";
+				// $this->api_whatsapp->wa_notif($msg,$get_user['phone']);
 			}
 			if (!empty($this->input->post('cc_memo[]'))){
 				foreach ($this->input->post('cc_memo[]') as $value1) 
 				{
 					$nip_cc .= $value1.';';
 					//send notif wa boc
-					$get_user = $this->db->get_where('users',['nip' => $value1])->row_array();
-					$nama_session = $this->session->userdata('nama');
-					$subject_memo = $this->input->post('subject_memo');
-					$msg = "There's a new Memo\nBOC From : *$nama_session*\nSubject :  *$subject_memo*";
-					$this->api_whatsapp->wa_notif($msg,$get_user['phone']);
+					// $get_user = $this->db->get_where('users',['nip' => $value1])->row_array();
+					// $nama_session = $this->session->userdata('nama');
+					// $subject_memo = $this->input->post('subject_memo');
+					// $msg = "There's a new Memo\nBOC From : *$nama_session*\nSubject :  *$subject_memo*";
+					// $this->api_whatsapp->wa_notif($msg,$get_user['phone']);
 				}
 			}
 			
@@ -475,26 +475,24 @@ public function simpan_memo()
 			// Count total files
 			//$countfiles = count($_FILES['file']['name']);
 			$countfiles = count(array_filter($_FILES['file']['name']));
-			
+
 			// Looping all files
 			for($i=0;$i<$countfiles;$i++){
-			 $filename_ = $_FILES['file']['name'];
+			 $filename_ = $_FILES['file']['name'][$i];
 			 $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyz';
 			 $s1 = substr(str_shuffle($permitted_chars), 0, 10);
-			 $array = explode('.', $_FILES['file']['name']);
+			 $array = explode('.', $_FILES['file']['name'][$i]);
 			 $extension = end($array);
 			 $filename = $s1.'.'.$extension;
-				
+
 			 $sql = "UPDATE memo SET attach = CONCAT_WS('$filename',attach, ';') WHERE Id=$last_id";
 			 $query = $this->db->query($sql);
 			 $sql1 = "UPDATE memo SET attach_name = CONCAT_WS('$filename_',attach_name, ';') WHERE Id=$last_id";
 			 $query = $this->db->query($sql1);
-			 
+
 			 // Upload file
-			 move_uploaded_file($_FILES['file']['tmp_name'],'upload/att_memo/'.$filename);
+			 move_uploaded_file($_FILES['file']['tmp_name'][$i],'upload/att_memo/'.$filename);
 			}
-			
-			redirect('app/create_memo');
 			
 
 		}
@@ -509,13 +507,12 @@ public function simpan_memo()
 		$res2 = $query->result_array();
 		$result = $res2[0]['COUNT(Id)'];
 		$data['count_inbox'] = $result;
-		
-		$sql3 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
-		$query3 = $this->db->query($sql3);
-		$res3 = $query3->result_array();
-		$result3 = $res3[0]['COUNT(id)'];
-		$data['count_inbox2'] = $result3;
-		// $this->load->view('create_task', $data);
+
+		$sql4 = "SELECT COUNT(id) FROM task WHERE (`member` LIKE '%$nip%' or `pic` like '%$nip%') and activity='1'";
+				$query4 = $this->db->query($sql4);
+				$res4 = $query4->result_array();
+				$result4 = $res4[0]['COUNT(id)'];
+				$data['count_inbox2'] = $result4;
 		
 		$this->load->view('create_memo', $data);
 	}
