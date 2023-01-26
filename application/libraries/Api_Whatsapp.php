@@ -9,7 +9,7 @@ class Api_Whatsapp {
         $phone = $phonee;
         $msg = $msgg;
         
-        $token = "7HuqmAxd9LKmRTFnu1CYj1wMmNYS49vQkt6qQcXtSM7jKWK9N6";
+        $token = "UpyiBnyRYVaDgCZ1Zye8o7aGQE7TU25btHV6rMZA3rT1Jg9Dot";
         
         $curl = curl_init();
         curl_setopt_array($curl, array(
