@@ -422,7 +422,7 @@ public function simpan_memo()
 				}
 			}
 			
-			if ($this->session->userdata('level_jabatan')>=2){
+			if ($this->session->userdata('level_jabatan')>=1){
 				// $this->db->select_max('nomor_memo');
 				// $this->db->where('bagian', $this->session->userdata('kode_nama'));
 				// $this->db->where('YEAR(tanggal)', 'year(curdate())');
