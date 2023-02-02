@@ -30,7 +30,7 @@
 	<link rel="stylesheet" href="<?php echo base_url();?>src/css/mobile_menu/icons.css">
 	
 	<!-- CKEditor -->
-	<script type="text/javascript" src="<?php echo base_url();?>src/ckeditor/ckeditor.js"></script>
+	<script src="<?php echo base_url();?>src/ckeditor/ckeditor.js"></script>
 	
 	<style>
 		.col-xs-3 {
